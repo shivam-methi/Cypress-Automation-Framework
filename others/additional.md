@@ -607,6 +607,7 @@ custom scripts
             cy.log('TEST RUNNING IN ELECTRON BROWSER!!');
         }
 ----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 
 1. Reports - 
 
@@ -702,6 +703,17 @@ custom scripts
     npx cypress run --spec cypress/e2e/automation-test-store/add-multiple-items-to-basket.js --env configFile=staging
 ----------------------------------------------------------------------------------------------------------
 
+3. Cypress Dashboard - 
+
+    Go to the - https://cloud.cypress.io/projects/
+    Login to Cypress
+    Create new organization 
+    Go to the Cypress app - Runs - Connect your project to the Cypress Dashbaord - select & Connect project
+    Go to the Project Settings - Copy the 'Project ID' Record Keys
+    Go to the Cypress config file - under module exports - add ProjectId: '5guftj'
+    Link dashboard with run - npx cypress run --record --key ebab65d6-6c3e-423e-8a03-f995d0d4a243 
+    GO the the Dashboard - Latest runs
+----------------------------------------------------------------------------------------------------------
 
 
 
