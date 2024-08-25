@@ -514,8 +514,8 @@
 
 #### 29. Retry: 
 
-##### add command in cypress.config.js file under e2e setup
-##### it will be applied globally
+##### add command in cypress.config.js file under e2e setup -
+###### it will be applied globally 
     
     retries:{
       runMode: 0,
@@ -523,7 +523,7 @@
     },
 
 
-##### to apply to a specific spec use command
+##### to apply to a specific spec use command -
 
     it("Retries on failure", {
         retries: {
@@ -537,19 +537,19 @@
 
 #### 30. Timeouts:
 
-##### alter default command timeout for specific test -
+##### Default command timeout for specific test -
     Cypress.config('defaultCommandTimeout', 20000);
 
     
-##### URL Timeouts
+##### URL Timeouts -
     cy.visit(("https://www.webdriveruniversity.com/"), { timeout: 10000 });
 
         
-##### Command Timeouts 
+##### Command Timeouts -
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true }, { timeout: 10000 });
 
         
-##### Assertion Timeouts
+##### Assertion Timeouts -
     cy.get('[name="first_name"]').type('John').should('be.visible', { timeout: 10000 });
 ----------------------------------------------------------------------------------------------------------
 
