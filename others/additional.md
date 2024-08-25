@@ -190,57 +190,89 @@
 
 #### 17. Traversing Elements:
 
-    children - 
+#####    children - 
+```bash
     cy.get('.traversal-breadcrumb').children('.active').should('contain', 'Contact Us');
+```
 
-    closest - 
+#####    closest - 
+```bash
     cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group');
+```
 
-    eq - 
+#####    eq - 
+```bash
     cy.get('.traversal-drinks-list > *').eq(2).should('contain', 'Milk');
+```
 
-    filter - 
+#####    filter - 
+```bash
     cy.get('.btn-group-toggle > *').filter('.active').should('contain', 'Button-1');
+```
 
-    find - 
+#####    find - 
+```bash
     cy.get('.traversal-pagination').find('li').find('a').should('have.length', 7);
+```
 
-    first - 
+#####    first - 
+```bash
     cy.get('.traversal-table > tbody > tr > td').first().should('contain', 'Andy');
+```
 
-    last - 
+#####    last - 
+```bash
     cy.get('.traversal-table > tbody > tr > td').last().should('contain', 'Scott');
+```
 
-    nextAll - 
+#####    nextAll -
+```bash 
     cy.get('.traversal-drinks-list').contains('Tea').nextAll().should('have.length', 3);
+```
 
-    nextUntil - 
+#####    nextUntil - 
+```bash
     cy.get('#coffee').nextUntil('#milk');
+```
 
-    not - 
+#####    not - 
+```bash
     cy.get('.traversal-button-states > button').not('.disabled').should('not.have.class', 'disabled');
+```
 
-    parent - 
+#####    parent - 
+```bash
     cy.get('.traversal-mark').parent().should('contain', 'Lorem ipsum dolor sit amet');
+```
 
-    parents - 
+#####    parents - 
+```bash
     cy.get('.traversal-cite').parents().should('match', 'blockquote');
+```
 
-    prev - 
+#####    prev - 
+```bash
     cy.get('#sugar').prev().contains('Espresso');
+```
 
-    prevAll - 
+#####    prevAll - 
+```bash
     cy.get('.sales').prevAll().should('have.length', 2);
+```
 
-    prevUntil - 
+#####    prevUntil - 
+```bash
     cy.get('#veggie').prevUntil('#fruits').should('have.length', 5);
+```
 
-    siblings - 
+#####    siblings - 
+```bash
     cy.get('.traversal-button-other-states .active').siblings().should('have.length', 3);
+```
 ----------------------------------------------------------------------------------------------------------
 
-18. Handle Date picker - 
-
+#### 18. Handle Date picker: 
+```bash
     cy.get('#datepicker > input').click();
 
     var date = new Date();
@@ -276,10 +308,11 @@
 
     selectMonthAndYear();
     selectFutureDay();
+```
 ----------------------------------------------------------------------------------------------------------
 
-19. Handle Data table - 
-
+#### 19. Handle Data table:
+```bash
     var userDetails = [];
     let num = 0;
     cy.get('#thumbnail-1 td').each(($el, index, $list) => {
@@ -294,12 +327,14 @@
             }
             cy.log('Found total age:', num);
             expect(num).to.eq(322);
+```
 ----------------------------------------------------------------------------------------------------------
 
-20. Alias invoke - 
-
+#### 20. Alias invoke: 
+```bash
     cy.get('.fixed_wrapper .prdocutname').eq(0).invoke('text').as('productThumbnail');
     cy.get('@productThumbnail').its('length').should('be.gt', 5);
+```
 ----------------------------------------------------------------------------------------------------------
 
 21. Hooks - 
