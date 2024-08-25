@@ -152,85 +152,68 @@
 
 #### 17. Traversing Elements:
 
-#####    children - 
-```bash
+##### children - 
     cy.get('.traversal-breadcrumb').children('.active').should('contain', 'Contact Us');
-```
 
-#####    closest - 
-```bash
+
+##### closest - 
     cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group');
-```
 
-#####    eq - 
-```bash
+
+##### eq - 
     cy.get('.traversal-drinks-list > *').eq(2).should('contain', 'Milk');
-```
 
-#####    filter - 
-```bash
+
+##### filter - 
     cy.get('.btn-group-toggle > *').filter('.active').should('contain', 'Button-1');
-```
 
-#####    find - 
-```bash
+
+##### find - 
     cy.get('.traversal-pagination').find('li').find('a').should('have.length', 7);
-```
 
-#####    first - 
-```bash
+
+##### first - 
     cy.get('.traversal-table > tbody > tr > td').first().should('contain', 'Andy');
-```
 
-#####    last - 
-```bash
+
+##### last - 
     cy.get('.traversal-table > tbody > tr > td').last().should('contain', 'Scott');
-```
 
-#####    nextAll -
-```bash 
+
+##### nextAll -
     cy.get('.traversal-drinks-list').contains('Tea').nextAll().should('have.length', 3);
-```
 
-#####    nextUntil - 
-```bash
+
+##### nextUntil - 
     cy.get('#coffee').nextUntil('#milk');
-```
 
-#####    not - 
-```bash
+
+##### not - 
     cy.get('.traversal-button-states > button').not('.disabled').should('not.have.class', 'disabled');
-```
 
-#####    parent - 
-```bash
+
+##### parent - 
     cy.get('.traversal-mark').parent().should('contain', 'Lorem ipsum dolor sit amet');
-```
 
-#####    parents - 
-```bash
+
+##### parents - 
     cy.get('.traversal-cite').parents().should('match', 'blockquote');
-```
 
-#####    prev - 
-```bash
+
+##### prev - 
     cy.get('#sugar').prev().contains('Espresso');
-```
 
-#####    prevAll - 
-```bash
+
+##### prevAll - 
     cy.get('.sales').prevAll().should('have.length', 2);
-```
 
-#####    prevUntil - 
-```bash
+
+##### prevUntil - 
     cy.get('#veggie').prevUntil('#fruits').should('have.length', 5);
-```
 
-#####    siblings - 
-```bash
+
+##### siblings - 
     cy.get('.traversal-button-other-states .active').siblings().should('have.length', 3);
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 18. Handle Date picker: 
