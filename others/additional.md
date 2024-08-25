@@ -123,7 +123,6 @@
 ----------------------------------------------------------------------------------------------------------
 
 #### 10. Handle iFrames:
-```bash
     cy.get('#frame').then($iframe => {
     const body = $iframe.contents().find('body');
     cy.wrap(body).as('iframe');
@@ -136,11 +135,9 @@
     expect(text).to.include('Welcome to webdriveruniversity.com');
     })
     cy.get('@model').contains('Close').click();
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 11. Autocomplete(Suggested) Lists:
-```bash
     cy.get('#myInputautocomplete-list > *').each(($el, index, $list) => {
         const prod = $el.text();
         const productToSelect = 'Avacado';
@@ -151,41 +148,30 @@
             cy.url().should('include', productToSelect);
             }
         })
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 12. Mouse Actions - ScrollIntoView:
-```bash
     cy.get('#actions').scrollIntoView().click();
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 13. Mouse Actions - Drag & Drop: 
-```bash
     cy.get('#draggable').trigger('mousedown', { which: 1 });
     cy.get('#droppable').trigger('mousemove').trigger('mouseup', { force: true });
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 14. Mouse Actions - Double Cilck: 
-```bash
     cy.get('#double-click').dblclick();
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 15. Mouse Actions - Click & Hold: 
-```bash
     cy.get('#click-box').trigger('mousedown', { which: 1 }).then(($element) => {
     expect($element).to.have.css('background-color', 'rgb(0, 255, 0)');
     })
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 16. File Upload: 
-```bash
     cy.get('#myFile').selectFile('cypress/fixtures/cypress-architecture.png');
     cy.get('#submit-button').click();
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 17. Traversing Elements:
