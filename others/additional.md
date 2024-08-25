@@ -715,6 +715,80 @@ custom scripts
     GO the the Dashboard - Latest runs
 ----------------------------------------------------------------------------------------------------------
 
+4. Jenkins - 
+
+    ▪ Jenkins is a ‘Free Open Source’ automation server.
+    ▪ Jenkins aids the process of automating different parts of the software development life cycle such 
+      as building,  testing, deploying and facilitating continuous integration and continuous delivery.
+    ▪ To simplify the process of triggering automated test(s); by setting up a platform (Jenkins) in order 
+      to trigger automated tests (Framework).
+    ▪ Jenkins comes bundled with lots of useful functionality and free plugins.
+
+    Download & Setup 
+    ▪ JDK
+    ▪ Jenkins - Download 
+        Go to the https://www.jenkins.io/download/
+        Select LTS - Generic Java package (.war)
+        Go to the path and run command: java -Dfile.encoding=UTF-8 -jar jenkins.war --httpPort=8080
+        Go to the browser: http://localhost:8080/
+        Go to the path: C:\Users\hp\.jenkins\secrets\initialAdminPassword
+        Copy the password & Paste in Briwser - Unlock Jenkins - Administrator password
+        Customize Jenkins - Install Suggested Plugins 
+        Getting Started - Setup Admin details
+        Login & Enter creds: admin / admin
+        Instance Configuration 
+        Save & Finish 
+
+    ▪ Install Pulgins 
+        Go to the Manage Jenkins - Plugins 
+        GitHub Authentication 
+        Github Integration 
+        NodeJS
+
+    ▪ Tools Configuration
+        Go to the Manage Jenkins - Tools 
+        JDK 
+        Git
+        NodeJS
+
+    ▪ Create a Project
+        Go to the New Item - Freestyle project
+        Add Source Code Management - Git
+        Add Build Steps - Execute Windows batch command
+        Parameterized - Choice Parameter
+----------------------------------------------------------------------------------------------------------
+
+5. Parallelization - 
+    ▪ If your project has a large number of tests, it can take a long time for tests to complete running serially 
+      on one machine. 
+    ▪ Running tests in parallel across many virtual machines can save your team time and money when running tests 
+      in Continuous Integration (CI).
+    ▪ Cypress can run recorded tests in parallel, across multiple machines. 
+    ▪ ![alt text](parallelization-cypress.png)
+    ▪ Cypress' parallelization strategy is file-based, so in order to utilize parallelization, 
+      your tests will need to be split across separate files.
+    ▪ Cypress will assign each spec file to an available machine based on balance strategy. 
+      Due to this balance strategy, the run order of the spec files is not guaranteed when parallelized.
+    ▪ Command to run - cypress run --record --key=abc123 --parallel
+    
+    Setup with Jenkins -
+    ▪ Configure Jenkins to be accesible from a local network.
+    ▪ Setup two Jenkins slaves on a dedicated High end(Powerful) machine.
+    ▪ Connect the Jenkins Host to the slave node(s).
+    ▪ When running cypress tests across more than 1 CI systems, ensure your CI system abide to the required criteria.
+    ▪ In order to run in parallel mode each machine must send identical environment parameters such as:
+        -specs
+        -osName
+        -osVersion
+        -browserName
+        -browserVersion 
+    ▪  This machine sent the following parameters:
+        { "
+        osName ": "win32", osVersion ": "10.0.18363", browserName ":
+        "Electron", browserVersion ": "80.0.3987.158", "specs": […]
+        }
+----------------------------------------------------------------------------------------------------------
+       
 
 
 
@@ -726,8 +800,6 @@ custom scripts
 
 
 
-
-59 - 2:30 hrs
-61,62,63,64,65,66 - 11:30 hrs
+63,64,65,66 - 8:30 hrs
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
