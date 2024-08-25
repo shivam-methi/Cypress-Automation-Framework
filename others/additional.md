@@ -1,24 +1,18 @@
-----------------------------------------------------------------------------------------------------------
-                                        ## COMMANDS::
+## COMMANDS::
 ----------------------------------------------------------------------------------------------------------
 
 #### 1. Iteration of items: 
-```bash
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
                 if ($el.text().includes('Curls to straight Shampoo')) {
                     cy.wrap($el).click();
                 }
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 2. Handling Multiple tabs - Remove target attribute:
-```bash
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 3. Origin Policy: 
-```bash
     cy.origin('webdriveruniversity.com', () => {
             cy.visit("/");
         })
@@ -26,26 +20,21 @@
         cy.origin('google.com', () => {
             cy.visit("/");
         })
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 4. Browser Navigations:
-```bash
     cy.visit("https://www.webdriveruniversity.com/");
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
     cy.go('back');
     cy.reload();
     cy.go('forward');
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 5. Javascript Alert Popup: 
-```bash
     cy.get('#button1').click();
     cy.on('window:alert', (str) =>{
     expect(str).to.equal('I am an alert box!');
     })
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 6. Javascript Confirm Popup: 
