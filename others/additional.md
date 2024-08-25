@@ -362,7 +362,7 @@
 
 #### 22. Fixtures:
 
-##### created a 'userDetails.json' file in fixtures folder
+##### created a 'userDetails.json' file in fixtures folder -
     
     {
         "first_name": "John",
@@ -371,7 +371,7 @@
     }
 
 
-##### using the data into the test files 
+##### using the data into the test files -
 
      before(function () {
         cy.fixture('userDetails').as('user').then(function (user) {
@@ -386,7 +386,7 @@
 
 #### 23. Custom Commands:
  
-##### added functions in 'commands.js' file in support folder
+##### added functions in 'commands.js' file in support folder -
 
     Cypress.Commands.add('selectProduct', productName => {
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
@@ -397,7 +397,7 @@
     })
 
 
-##### using the commands into the test files 
+##### using the commands into the test files -
 
     cy.selectProduct('Eau Parfumee au The Vert Shampoo');
 ----------------------------------------------------------------------------------------------------------
@@ -514,8 +514,8 @@
 
 #### 29. Retry: 
 
-    // add command in cypress.config.js file under e2e setup
-    // it will be applied globally
+##### add command in cypress.config.js file under e2e setup
+##### it will be applied globally
     
     retries:{
       runMode: 0,
@@ -523,7 +523,7 @@
     },
 
 
-    // to apply to a specific spec use command
+##### to apply to a specific spec use command
 
     it("Retries on failure", {
         retries: {
@@ -537,19 +537,19 @@
 
 #### 30. Timeouts:
 
-    // alter default command timeout for specific test -
+##### alter default command timeout for specific test -
     Cypress.config('defaultCommandTimeout', 20000);
 
     
-    //URL Timeouts
+##### URL Timeouts
     cy.visit(("https://www.webdriveruniversity.com/"), { timeout: 10000 });
 
         
-    //Command Timeouts 
+##### Command Timeouts 
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true }, { timeout: 10000 });
 
         
-    //Assertion Timeouts
+##### Assertion Timeouts
     cy.get('[name="first_name"]').type('John').should('be.visible', { timeout: 10000 });
 ----------------------------------------------------------------------------------------------------------
 
