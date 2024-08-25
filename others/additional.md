@@ -572,6 +572,7 @@
     Add files - qa.json, staging.json, prod.json
 
 ##### Add custom code in cypress config file - 
+
 ###### at top
     const fs = require('fs-extra');
     const path = require('path');
@@ -587,7 +588,7 @@
     return fs.readJson(pathToConfigFile);
     }
 
-    //in e2e - setupNodeEvents
+###### e2e - setupNodeEvents
     const file = config.env.configFile || ''
 
     return getConfigurationByFile(file)
