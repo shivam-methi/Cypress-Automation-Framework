@@ -1,5 +1,6 @@
 ## COMMANDS::
 ----------------------------------------------------------------------------------------------------------
+## COMMANDS::
 
 #### 1. Iteration of items: 
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
