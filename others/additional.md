@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------------
-                                            COMMANDS::
+                                        ## COMMANDS::
 ----------------------------------------------------------------------------------------------------------
 
 #### 1. Iteration of items - 
@@ -11,13 +11,13 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-### 2. Handling Multiple tabs - Remove target attribute -
+#### 2. Handling Multiple tabs - Remove target attribute -
 ```bash
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
 ```
 ----------------------------------------------------------------------------------------------------------
 
-### 3. Origin Policy - 
+#### 3. Origin Policy - 
 ```bash
     cy.origin('webdriveruniversity.com', () => {
             cy.visit("/");
@@ -29,7 +29,7 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-### 4. Browser Navigations -
+#### 4. Browser Navigations -
 ```bash
     cy.visit("https://www.webdriveruniversity.com/");
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
@@ -39,33 +39,36 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-5. Javascript Alert Popup - 
-
+#### 5. Javascript Alert Popup - 
+```bash
     cy.get('#button1').click();
     cy.on('window:alert', (str) =>{
     expect(str).to.equal('I am an alert box!');
     })
+```
 ----------------------------------------------------------------------------------------------------------
 
-6. Javascript Confirm Popup - 
-
-    // Select Ok/true
+#### 6. Javascript Confirm Popup - 
+    ##### Select Ok/true
+```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
         return true;  
     })
     cy.get('#confirm-alert-text').contains('You pressed Ok!');
+```
 
-
-    // Select Cancel/false
+    ##### Select Cancel/false
+```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
         return false;  
     })
     cy.get('#confirm-alert-text').contains('You pressed Cancel!');
+```
 ----------------------------------------------------------------------------------------------------------
 
-7. Handle Checkboxes - 
+#### 7. Handle Checkboxes - 
 
     // Check the checkbox
     cy.get('#checkboxes > :nth-child(1) > input').as('option-1')
@@ -82,7 +85,7 @@
         .should('be.checked');
 ----------------------------------------------------------------------------------------------------------
 
-8. Handle Radio buttons -
+#### 8. Handle Radio buttons -
 
     // no option is selected/disabled
     cy.get('#radio-buttons').find('[type="radio"]').first().check();
@@ -97,7 +100,7 @@
     cy.get('[value="pumpkin"]').should('not.be.checked');
 ----------------------------------------------------------------------------------------------------------
 
-9. Handle Dropdown lists - 
+#### 9. Handle Dropdown lists - 
 
     // based on value tag
     cy.get('#dropdowm-menu-1').select('python').should('have.value', 'python');
@@ -107,7 +110,7 @@
     cy.get('#dropdowm-menu-2').select('TestNG').contains('TestNG'); 
 ----------------------------------------------------------------------------------------------------------
 
-10. Handle iFrames -
+#### 10. Handle iFrames -
 
     cy.get('#frame').then($iframe => {
     const body = $iframe.contents().find('body');
