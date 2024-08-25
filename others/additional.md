@@ -2,7 +2,7 @@
                                         ## COMMANDS::
 ----------------------------------------------------------------------------------------------------------
 
-#### 1. Iteration of items - 
+#### 1. Iteration of items: 
 ```bash
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
                 if ($el.text().includes('Curls to straight Shampoo')) {
@@ -11,13 +11,13 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 2. Handling Multiple tabs - Remove target attribute -
+#### 2. Handling Multiple tabs - Remove target attribute:
 ```bash
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 3. Origin Policy - 
+#### 3. Origin Policy: 
 ```bash
     cy.origin('webdriveruniversity.com', () => {
             cy.visit("/");
@@ -29,7 +29,7 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 4. Browser Navigations -
+#### 4. Browser Navigations:
 ```bash
     cy.visit("https://www.webdriveruniversity.com/");
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
@@ -39,7 +39,7 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 5. Javascript Alert Popup - 
+#### 5. Javascript Alert Popup: 
 ```bash
     cy.get('#button1').click();
     cy.on('window:alert', (str) =>{
@@ -48,9 +48,9 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 6. Javascript Confirm Popup - 
+#### 6. Javascript Confirm Popup: 
 
-##### Select Ok/true:
+##### Select Ok/true -
 ```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
@@ -59,7 +59,7 @@
     cy.get('#confirm-alert-text').contains('You pressed Ok!');
 ```
 
- ##### Select Cancel/false:
+ ##### Select Cancel/false -
 ```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
@@ -69,36 +69,36 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 7. Handle Checkboxes - 
+#### 7. Handle Checkboxes: 
 
-##### Check the checkbox:
+##### Check the checkbox -
 ```bash
     cy.get('#checkboxes > :nth-child(1) > input').as('option-1')
     cy.get('@option-1').check().should('be.checked');
 ```
     
-##### Uncheck the checkbox:
+##### Uncheck the checkbox -
 ```bash
     cy.get(':nth-child(5) > input').as('option-3')
     cy.get('@option-3').uncheck().should('not.be.checked');    
 ```
 
-##### Check the multiple checkbox:
+##### Check the multiple checkbox -
 ```bash
     cy.get('input[type="checkbox"]').check(['option-1', 'option-2', 'option-3', 'option-4'])
         .should('be.checked');
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 8. Handle Radio buttons -
+#### 8. Handle Radio buttons:
 
-##### no option is selected/disabled:
+##### no option is selected/disabled -
 ```bash
     cy.get('#radio-buttons').find('[type="radio"]').first().check();
     cy.get('#radio-buttons').find('[type="radio"]').eq(1).check();
 ```
 
-##### options are already selected/disabled:
+##### options are already selected/disabled -
 ```bash
     cy.get('[value="lettuce"]').should('not.be.checked');
     cy.get('[value="cabbage"]').should('be.disabled');
@@ -109,20 +109,20 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-#### 9. Handle Dropdown lists - 
+#### 9. Handle Dropdown lists: 
 
-##### based on value tag:
+##### based on value tag -
 ```bash
     cy.get('#dropdowm-menu-1').select('python').should('have.value', 'python');
 ```
     
-##### based on text:
+##### based on text -
 ```bash
     cy.get('#dropdowm-menu-2').select('TestNG').contains('TestNG');
 ``` 
 ----------------------------------------------------------------------------------------------------------
 
-#### 10. Handle iFrames -
+#### 10. Handle iFrames:
 ```bash
     cy.get('#frame').then($iframe => {
     const body = $iframe.contents().find('body');
