@@ -46,6 +46,7 @@
     })
     cy.get('#confirm-alert-text').contains('You pressed Ok!');
 
+
  ##### Select Cancel/false -
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
@@ -57,54 +58,44 @@
 #### 7. Handle Checkboxes: 
 
 ##### Check the checkbox -
-```bash
     cy.get('#checkboxes > :nth-child(1) > input').as('option-1')
     cy.get('@option-1').check().should('be.checked');
-```
-    
+
+
 ##### Uncheck the checkbox -
-```bash
     cy.get(':nth-child(5) > input').as('option-3')
     cy.get('@option-3').uncheck().should('not.be.checked');    
-```
+
 
 ##### Check the multiple checkbox -
-```bash
     cy.get('input[type="checkbox"]').check(['option-1', 'option-2', 'option-3', 'option-4'])
         .should('be.checked');
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 8. Handle Radio buttons:
 
 ##### no option is selected/disabled -
-```bash
     cy.get('#radio-buttons').find('[type="radio"]').first().check();
     cy.get('#radio-buttons').find('[type="radio"]').eq(1).check();
-```
+
 
 ##### options are already selected/disabled -
-```bash
     cy.get('[value="lettuce"]').should('not.be.checked');
     cy.get('[value="cabbage"]').should('be.disabled');
     cy.get('[value="pumpkin"]').should('be.checked');
 
     cy.get('[value="lettuce"]').check().should('be.checked');
     cy.get('[value="pumpkin"]').should('not.be.checked');
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 9. Handle Dropdown lists: 
 
 ##### based on value tag -
-```bash
     cy.get('#dropdowm-menu-1').select('python').should('have.value', 'python');
-```
-    
+
+
 ##### based on text -
-```bash
     cy.get('#dropdowm-menu-2').select('TestNG').contains('TestNG');
-``` 
 ----------------------------------------------------------------------------------------------------------
 
 #### 10. Handle iFrames:
