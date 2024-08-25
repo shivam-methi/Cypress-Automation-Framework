@@ -473,20 +473,20 @@
 
 ##### Screenshots - 
 
-###### add command in cypress.config.js file under e2e setup
+##### add command in cypress.config.js file under e2e setup -
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
 ###### screenshots will only work with 'cypress run' command using CLI
 ###### default folder 'cypress/screenshots'
 
-###### add command in cypress.config.js file under e2e setup    
+##### add command in cypress.config.js file under e2e setup    
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
-###### on failure - capture automatically 
+##### on failure - capture automatically 
     
-###### on even success - 
+##### on even success - 
     cy.screenshot('success');
 
 
@@ -501,14 +501,14 @@
 
 #### 28. Setup Viewport: 
 
-###### add command in cypress.config.js file under e2e setup
-    // it will be applied globally
+##### add command in cypress.config.js file under e2e setup -
+###### it will be applied globally
     
     viewportHeight: 1080,
     viewportWidth: 1920,
 
 
-    // to apply to a specific spec use command
+##### to apply to a specific spec use command -
         cy.viewport(550, 750);
 ----------------------------------------------------------------------------------------------------------
 
