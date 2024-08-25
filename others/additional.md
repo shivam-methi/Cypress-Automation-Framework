@@ -272,7 +272,6 @@
 ----------------------------------------------------------------------------------------------------------
 
 #### 18. Handle Date picker: 
-```bash
     cy.get('#datepicker > input').click();
 
     var date = new Date();
@@ -308,11 +307,9 @@
 
     selectMonthAndYear();
     selectFutureDay();
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 19. Handle Data table:
-```bash
     var userDetails = [];
     let num = 0;
     cy.get('#thumbnail-1 td').each(($el, index, $list) => {
@@ -327,14 +324,11 @@
             }
             cy.log('Found total age:', num);
             expect(num).to.eq(322);
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 20. Alias invoke: 
-```bash
     cy.get('.fixed_wrapper .prdocutname').eq(0).invoke('text').as('productThumbnail');
     cy.get('@productThumbnail').its('length').should('be.gt', 5);
-```
 ----------------------------------------------------------------------------------------------------------
 
 #### 21. Hooks: 
