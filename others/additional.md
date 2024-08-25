@@ -49,7 +49,8 @@
 ----------------------------------------------------------------------------------------------------------
 
 #### 6. Javascript Confirm Popup - 
-    ##### Select Ok/true
+
+##### Select Ok/true
 ```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
@@ -58,7 +59,7 @@
     cy.get('#confirm-alert-text').contains('You pressed Ok!');
 ```
 
-    ##### Select Cancel/false
+ ##### Select Cancel/false
 ```bash
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
