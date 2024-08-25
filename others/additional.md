@@ -337,28 +337,32 @@
 ```
 ----------------------------------------------------------------------------------------------------------
 
-21. Hooks - 
+#### 21. Hooks: 
 
+##### before -
     before(() => {
     cy.log("runs once before all tests in the block");
     });
 
+##### after -
     after(() => {
     cy.log("runs once after all tests in the block");
     });
 
+##### beforeEach -
     beforeEach(() => {
     cy.log("runs before each test in the block");
     });
 
+##### afterEach -
     afterEach(() => {
     cy.log("runs after each test in the block");
     });
 ----------------------------------------------------------------------------------------------------------
 
-22. Fixtures - 
+#### 22. Fixtures:
 
-    // created a 'userDetails.json' file in fixtures folder
+##### created a 'userDetails.json' file in fixtures folder
     
     {
         "first_name": "John",
@@ -367,7 +371,7 @@
     }
 
 
-    // using the data into the test files 
+##### using the data into the test files 
 
      before(function () {
         cy.fixture('userDetails').as('user').then(function (user) {
@@ -380,9 +384,9 @@
     cy.get('[name="email"]').type(user.email);
 ----------------------------------------------------------------------------------------------------------
 
-23. Custom Commands - 
+#### 23. Custom Commands:
  
-    // added functions in 'commands.js' file in support folder
+##### added functions in 'commands.js' file in support folder
 
     Cypress.Commands.add('selectProduct', productName => {
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
@@ -393,14 +397,14 @@
     })
 
 
-    // using the commands into the test files 
+##### using the commands into the test files 
 
     cy.selectProduct('Eau Parfumee au The Vert Shampoo');
 ----------------------------------------------------------------------------------------------------------
 
-24. Setup Environment variables - 
+#### 24. Setup Environment variables:
 
-    // add command in cypress.config.js file under e2e setup
+##### add command in cypress.config.js file under e2e setup
     
     env: {
       first_name: "John",
@@ -408,96 +412,96 @@
       email: "john.doe@gmail.com"
     }
 
-    // using the commands into the test files 
+##### using the commands into the test files 
 
     cy.get('[name="first_name"]').type(Cypress.env("first_name"));
     cy.get('[name="last_name"]').type(Cypress.env("last_name"));
     cy.get('[name="email"]').type(Cypress.env("email"));
 
 
-    //command to run from CLI
+##### command to run from CLI
 
     npx cypress run --browser chrome --headed --spec cypress/e2e/COMMANDS/24.environment-variables.js --env first_name=Tim,last_name=Wayne,email=wayne@gmail.com
 ----------------------------------------------------------------------------------------------------------
 
-25. Setup Base URL - 
+#### 25. Setup Base URL: 
 
-    // add command in cypress.config.js file under e2e setup
+##### add command in cypress.config.js file under e2e setup
 
     baseUrl: "https://www.webdriveruniversity.com/",
 
 
-    // using the commands into the test files 
+##### using the commands into the test files 
         
     cy.visit("/");
 
 
-    //command to run from CLI
+##### command to run from CLI
 
     npx cypress run --browser chrome --headed --spec cypress/e2e/COMMANDS/25.base-url.js --config baseUrl=https://www.automationteststore.com
 ----------------------------------------------------------------------------------------------------------
 
-26. Debugging -
+#### 26. Debugging:
 
-    debugger  - 
-    //does not pause the execution until open the inspect tool
+#####  debugger  - 
+###### does not pause the execution until open the inspect tool
 
     cy.get('[name="first_name"]').type('John').then(() => {
         debugger;
     });
 
 
-    debug() - 
-    //does not pause the execution until open the inspect tool
+#####  debug() - 
+###### does not pause the execution until open the inspect tool
 
     cy.get('[name="first_name"]').type('John').debug();
 
 
-    pause() - 
-    //pause the execution without opening the inspect tool
+###### pause() - 
+###### pause the execution without opening the inspect tool
 
     cy.get('[name="first_name"]').type('John').pause();
 
 
-    wait() - 
-    //pause the execution until specified time 
+#####  wait() - 
+###### pause the execution until specified time 
 
     cy.get('[name="first_name"]').type('John').pause(10000);
 ----------------------------------------------------------------------------------------------------------
 
-27. Capture Screenshots & Videos - 
+#### 27. Capture Screenshots & Videos:
 
-    Screenshots - 
+##### Screenshots - 
 
-    // add command in cypress.config.js file under e2e setup
+###### add command in cypress.config.js file under e2e setup
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
-    //screenshots will only work with 'cypress run' command using CLI
-    //default folder 'cypress/screenshots'
+###### screenshots will only work with 'cypress run' command using CLI
+###### default folder 'cypress/screenshots'
 
-    // add command in cypress.config.js file under e2e setup    
+###### add command in cypress.config.js file under e2e setup    
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
-    //on failure - capture automatically 
+###### on failure - capture automatically 
     
-    //on even success - 
+###### on even success - 
     cy.screenshot('success');
 
 
-    Videos -
+##### Videos -
 
-    //vidoes will only work with 'cypress run' command using CLI
-    //default folder 'cypress/video'
+###### vidoes will only work with 'cypress run' command using CLI
+###### default folder 'cypress/video'
 
-    // add command in cypress.config.js file under e2e setup to stop to record
+###### add command in cypress.config.js file under e2e setup to stop to record
     video: false
 ----------------------------------------------------------------------------------------------------------
 
-28. Setup Viewport - 
+#### 28. Setup Viewport: 
 
-    // add command in cypress.config.js file under e2e setup
+###### add command in cypress.config.js file under e2e setup
     // it will be applied globally
     
     viewportHeight: 1080,
@@ -508,7 +512,7 @@
         cy.viewport(550, 750);
 ----------------------------------------------------------------------------------------------------------
 
-29. Retry - 
+#### 29. Retry: 
 
     // add command in cypress.config.js file under e2e setup
     // it will be applied globally
@@ -531,7 +535,7 @@
     })
 ----------------------------------------------------------------------------------------------------------
 
-30. Timeouts - 
+#### 30. Timeouts:
 
     // alter default command timeout for specific test -
     Cypress.config('defaultCommandTimeout', 20000);
@@ -549,7 +553,7 @@
     cy.get('[name="first_name"]').type('John').should('be.visible', { timeout: 10000 });
 ----------------------------------------------------------------------------------------------------------
 
-31. Specific Browser - 
+#### 31. Specific Browser:
 
     if (Cypress.isBrowser('electron')) {
             cy.log('TEST RUNNING IN ELECTRON BROWSER!!');
