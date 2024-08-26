@@ -715,15 +715,54 @@
 ▪ It aides the process of bridging the gap between technical and non technical parties 
   (i.e. the Technology team & Product team).
 ▪ It is highly suitable for Agile Development Environments and encourages collaboration between teams.
+▪ Keywords:
+        Feature
+        Scenario
+        Backgrond
+        Given 
+        When 
+        Then
+        And
+        But
+        Scenario Outline
+        Example
+        Tags
+        
+
+##### Add custom code in cypress config file - 
+
+##### Command to run: 
+    npm install --save-dev cypress-cucumber-preprocessor
+
+###### at top
+    const cucumber = require('cypress-cucumber-preprocessor').default;
+
+###### e2e - setupNodeEvents
+    const cucumber = require('cypress-cucumber-preprocessor').default;
 
 
+##### Add custom code in package.json file - 
+    "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/support/step_definitions"
+    }
 
 
+##### Add vs code extention 'Cucumber (Gherkin) Full Support'- 
 
 
+##### Go to the File > Preferences > Settings > Extentions > Cucumber Auto Complete Settings > Edit - 
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.steps": [
+        "cypress/support/step_definitions/*.js"
+    ]
+
+
+##### Command to run:
+    npx cypress run --spec 'cypress/e2e/webdriver-uni/features/*.feature' -e TAGS=\"@regression\" --headed --browser chrome
 ----------------------------------------------------------------------------------------------------------
        
-API Testing: 
+#### 8. API Testing: 
 
     Components - 
     URL - Also known as endpoint (HTTPS link), for example: /{country}/weather
@@ -755,8 +794,6 @@ API Testing:
 
 
 
-
-63,64,66 - 8:30 hrs
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
