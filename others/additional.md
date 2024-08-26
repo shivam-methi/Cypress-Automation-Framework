@@ -683,7 +683,71 @@
         "Electron", browserVersion ": "80.0.3987.158", "specs": […]
         }
 ----------------------------------------------------------------------------------------------------------
+
+#### 6. Cypress Studio: 
+
+    ▪ Cypress Studio is an experimental feature and can be enabled by adding the experimentalStudio attribute to 
+      your Cypress configuration.
+    ▪ Add custom code in cypress config file - 
+    {
+        e2e: {
+            experimentalStudio: true
+        }
+    }
+    ▪ Cypress Studio is currently only available for writing E2E tests.
+    ▪ Cypress Studio does not support writing tests that use domains of multiple origins.
+    ▪ Cypress Studio provides a visual way to generate tests within Cypress, by recording interactions 
+      against the application under test.
+    ▪ The .click(), .type(), .check(), .uncheck(), and .select() Cypress commands are supported and will 
+      generate test code when interacting with the DOM inside of the Cypress Studio. 
+    ▪ You can also generate assertions by right clicking on an element that you would like to assert on.
+    ▪ Steps - 
+        Step 1 - Run the spec
+        Step 2 - Launch Cypress Studio
+        Step 3 - Interact with the Application
+----------------------------------------------------------------------------------------------------------
+
+#### 7. Cucumber BDD: 
+
+▪ Cucumber – is a software tool which supports BDD; https://cucumber.io/
+▪ BDD – stands for Behavior-Driven Development.
+▪ It’s a form of development process.
+▪ It aides the process of bridging the gap between technical and non technical parties 
+  (i.e. the Technology team & Product team).
+▪ It is highly suitable for Agile Development Environments and encourages collaboration between teams.
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------
        
+API Testing: 
+
+    Components - 
+    URL - Also known as endpoint (HTTPS link), for example: /{country}/weather
+    API HEADERS - Authorization (Authentication information…) 
+    Content type - (text/html or text/json)
+    Cache Control
+    Types - 
+           GET Used to request data from a server.
+           POST Used to send data to a server.
+           PUT Used to send data to a server; create / update a resource.
+           DELETE Used to delete data on a server.
+    BODY : The data (sometimes called “body” or “message“.
+
+
+    ▪ Cypress UI tests perform ‘test actions’ via the browser, mimicking real user actions and in the 
+      process multiple API calls could be sent back and forth between the client and server.
+    ▪ Cypress even provides the ability to extract data from the server (DB).
+    ▪ This data could even be pumped into the Cypress test automation framework, eliminating the need to 
+      depend on fixed data sets etc.
+    ▪ Cypress has the ability to act as a middleman to intercept API calls.
+    ▪ We can provide mocked responses for specific API’s eliminating the need to rely on the backend server; 
+      in the process increasing the speed of tests. 
+    ▪ ![alt text](<API Testing With Cypress.png>)
+----------------------------------------------------------------------------------------------------------
 
 
 
@@ -692,10 +756,7 @@
 
 
 
-
-
-
-63,64,65,66 - 8:30 hrs
+63,64,66 - 8:30 hrs
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 

@@ -27,6 +27,7 @@ module.exports = defineConfig({
     baseUrl: "https://www.webdriveruniversity.com",
     chromeWebSecurity: false,
     experimentalSessionAndOrigin: true,
+    // experimentalStudio: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
     screenshotOnRunFailure: true,
