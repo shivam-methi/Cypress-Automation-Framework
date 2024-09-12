@@ -788,6 +788,29 @@
     ▪ ![alt text](<API Testing With Cypress.png>)
 ----------------------------------------------------------------------------------------------------------
 
+#### 8. Cypress Installation & Setup: 
+▪ Install Node.js and NPM
+    node -v
+    npm -v
+
+▪  Initialize a New Project
+    mkdir my-cypress-project
+    cd my-cypress-project
+    npm init -y
+
+▪  Install Cypress
+    npm install cypress --save-dev
+
+▪  Open Cypress
+    npx cypress open
+
+▪  Write Your First Test
+    In the cypress/e2e folder, create a new test file, e.g., example_spec.js
+
+▪  Run the Test
+    After writing the test, run it through the Cypress Test Runner by clicking on the test file in the Cypress UI.
+    npx cypress run cypress/e2e/example_spec.js
+
 
 
 
