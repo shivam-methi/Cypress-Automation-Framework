@@ -894,7 +894,7 @@ npx cypress run : to run all the spec files headless
 npx cypress run --record --spec "(path of the spec file with spec file name)"
 cpress run --headed
 cpress run --headed firefox/edge/chrome
-//// <reference types="Cypress"/> ---this is for getting all the inbuild cypress functions aka INTELLISENSE.
+//// <reference types="Cypress"/> ---this is for getting all the inbuild cypress functions aka INTELLISENSE
 
 npx cypress run --spec cypress/e2e/Framework.cy.js --headed --browser chrome --env url="https://rahulshettyacademy.com"
 
