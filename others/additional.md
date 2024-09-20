@@ -911,25 +911,26 @@ cy.get("tr td:nth-child(2))                                             ---Here 
 
 NEED TO WORK ON::
 keyboard keys 
-screenshot
+~~screenshot~~
 fixtures - data driven from external source 
-env files - default, create separate for diff env - QA, Staging
+~~env files - default, create separate for diff env - QA, Staging~~
 create custom commands 
 page objects
-retry
-reports 
+~~retry~~
+~~reports~~
 config options
-integration with git/jenkins
-run with dashboard/cloud
-pause/debug
+~~integration with git/jenkins~~
+~~run with dashboard/cloud~~
+~~pause/debug~~
 api testing
 parallel execution 
 mocking
-same origin policy
-timeouts
-dashboard
+~~same origin policy~~
+~~timeouts~~
+~~dashboard~~
 assertions
 tags
 bdd
-custom scripts
+~~file upload~~
+~~iframe~~
 
