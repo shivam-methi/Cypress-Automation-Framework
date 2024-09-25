@@ -1,0 +1,62 @@
+[
+  {
+    "Company Name": "Tech Solutions",
+    "Product": "CRM Software",
+    "City": "New York",
+    "Email": "contact@techsolutions.com"
+  },
+  {
+    "Company Name": "Data Innovations",
+    "Product": "Data Analytics",
+    "City": "San Francisco",
+    "Email": "info@datainnovations.com"
+  },
+  {
+    "Company Name": "Bright Software",
+    "Product": "Project Management Tool",
+    "City": "Austin",
+    "Email": "support@brightsoft.com"
+  },
+  {
+    "Company Name": "NextGen Apps",
+    "Product": "Mobile App Development",
+    "City": "Chicago",
+    "Email": "sales@nextgenapps.com"
+  },
+  {
+    "Company Name": "Global Systems",
+    "Product": "ERP System",
+    "City": "Los Angeles",
+    "Email": "info@globalsystems.com"
+  },
+  {
+    "Company Name": "InnoTech",
+    "Product": "AI-powered Chatbot",
+    "City": "Seattle",
+    "Email": "support@innotech.com"
+  },
+  {
+    "Company Name": "Skyline Tech",
+    "Product": "Cloud Solutions",
+    "City": "Denver",
+    "Email": "contact@skyline.com"
+  },
+  {
+    "Company Name": "Quantum Soft",
+    "Product": "Quantum Computing",
+    "City": "Boston",
+    "Email": "info@quantumsoft.com"
+  },
+  {
+    "Company Name": "Fusion Enterprises",
+    "Product": "Business Intelligence",
+    "City": "Miami",
+    "Email": "support@fusionenterprises.com"
+  },
+  {
+    "Company Name": "Visionary Labs",
+    "Product": "AR/VR Solutions",
+    "City": "Houston",
+    "Email": "info@visionarylabs.com"
+  }
+]

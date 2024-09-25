@@ -1,7 +1,9 @@
 const { defineConfig } = require("cypress");
+const { writeFileSync } = require("fs");
 const fs = require('fs-extra');
 const path = require('path');
 const cucumber = require('cypress-cucumber-preprocessor').default;
+const XLSX = require('xlsx');
 
 function getConfigurationByFile(file) {
   const pathToConfigFile = path.resolve('cypress\\config', `${file}.json`)
@@ -18,6 +20,18 @@ module.exports = defineConfig({
   projectId: '5guftj',
   e2e: {
     setupNodeEvents(on, config) {
+      on('task', {
+        convertXlsxToJson(filePath) {
+          const workbook = XLSX.readFile(filePath);
+          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+          const fileName = path.basename(filePath, '.xlsx');
+          const jsonFilePath = `./cypress/fixtures/${fileName}.json`;
+          writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2));
+          return jsonFilePath;
+        }
+      })
       on('file:preprocessor', cucumber())
       // implement node event listeners here
       const file = config.env.configFile || ''

@@ -501,6 +501,58 @@
             cy.log('TEST RUNNING IN ELECTRON BROWSER!!');
         }
 ----------------------------------------------------------------------------------------------------------
+
+#### 32. Read data from excel:
+
+##### Command to run - 
+    npm install xlsx
+
+##### Add custom code in cypress config file - 
+
+###### at top
+    const { writeFileSync } = require('fs');
+    const XLSX = require('xlsx');
+
+##### at e2e - setupNodeEvents 
+    on('task', {
+        convertXlsxToJson(filePath) {
+          const workbook = XLSX.readFile(filePath);
+          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+          const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+          const fileName = path.basename(filePath, '.xlsx');
+          const jsonFilePath = `./cypress/fixtures/${fileName}.json`;
+          writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2));
+          return jsonFilePath;
+        }
+    })
+
+
+##### Create & add a excel file in /fixtures/excel - 
+    companies.xlsx
+
+
+##### using the commands into the test files -
+    before(() => {
+            // Check if the file exists first
+            cy.task('convertXlsxToJson', xlsxPath).then((jsonFilePath) => {
+                if (!jsonFilePath) {
+                    throw new Error('File conversion failed or file not found');
+                } else {
+                    cy.log(`Excel file converted to JSON at: ${jsonFilePath}`);
+                }
+            });
+        });
+
+
+    const jsonFileName = 'companies.json';  // Adjust if needed
+
+    // Verify that the JSON file has been created
+    cy.readFile(`./cypress/fixtures/${jsonFileName}`).then((jsonData) => {
+        expect(jsonData).to.exist;
+        cy.log('JSON data:', JSON.stringify(jsonData));
+    });
+----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
 #### 1. Reports:
