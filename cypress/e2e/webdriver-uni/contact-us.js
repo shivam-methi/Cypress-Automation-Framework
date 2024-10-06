@@ -1,4 +1,4 @@
-import HomePage_PO from "../../support/pageObjects/webdriver-uni/homePage_po";
+import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_po";
 import ContactUsPage_PO from "../../support/pageObjects/webdriver-uni/ContactUspage_po";
 
 describe("Test Contact Us form via WebdriverUni", () => {
