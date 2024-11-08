@@ -676,7 +676,8 @@
 ###### ▪ Jenkins - Download 
          Go to the https://www.jenkins.io/download/
          Select LTS - Generic Java package (.war)
-         Go to the path and run command: java -Dfile.encoding=UTF-8 -jar jenkins.war --httpPort=8080
+         Go to the path: D:\Testing\Jenkins
+         Run command: java -Dfile.encoding=UTF-8 -jar jenkins.war --httpPort=8080
          Go to the browser: http://localhost:8080/
          Go to the path: C:\Users\hp\.jenkins\secrets\initialAdminPassword
          Copy the password & Paste in Briwser - Unlock Jenkins - Administrator password
