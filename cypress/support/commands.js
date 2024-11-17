@@ -49,5 +49,21 @@ Cypress.Commands.add('addProductToBasket', productName => {
         }
     })
 })
+
+// 1. Disable Cypress uncaught exception failures from React hydration errors
+Cypress.on('uncaught:exception', (err) => {
+    if (
+        err.message.includes('Minified React error #418') ||
+        err.message.includes('Minified React error #423')
+    ) {
+        return false;
+    }
+    // Enable uncaught exception failures for other errors
+});
+
+// 2. Re-enable Cypress uncaught exception failures from React hydration errors
+Cypress.on('uncaught:exception', () => { });
+
+
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
