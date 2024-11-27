@@ -90,7 +90,7 @@ Disadvantages:
 12. Reporting: Mochaawesome, cucumber html report
 13. Screenshots: capture all the failures screen
 14. Readme.md: contains all the required information about project 
-               (i.e: setup & Installation commands, pluggins)
+               (i.e: setup & Installation commands, plugins)
 
 15. dashboard: cypress dashboard shows various widgets and reports of the runs.
 16. repository: github, for storing the code/repository   
