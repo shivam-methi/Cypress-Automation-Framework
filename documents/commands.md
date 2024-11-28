@@ -555,20 +555,20 @@
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
-#### 1. Reports:
+### 1. Reports:
 
-##### Cypress multireporter/junit reporter -
+#### Cypress multireporter/junit reporter -
 
-##### Command to run - 
+#### Command to run - 
     npm install cypress-multi-reporters mocha-junit-reporter --save-dev
 
-##### Add code to cypress config -
+#### Add code to cypress config -
     reporter: 'cypress-multi-reporters',
     reporterOptions: {
         configFile: 'reporter-config.json',
     },
 
-##### Create a file with name: reporter-config.json -
+#### Create a file with name: reporter-config.json -
     {
         "reporterEnabled": "spec, mocha-junit-reporter",
         "mochaJunitReporterReporterOptions": {
@@ -576,20 +576,20 @@
         }
     }
 
-##### Merge the reports -
+#### Merge the reports -
     npx junit-merge -d cypress/reports/junit -o cypress/reports/junit/reports.xml
 
-##### Delete the reports -
+#### Delete the reports -
     rm -rf cypress/reports/* || true
     rm -rf cypress/reports/junit/reports.xml
 
 
-##### cypress-mochawesome-reporter - 
+#### cypress-mochawesome-reporter - 
 
-##### Command to run: 
+#### Command to run: 
     npm install mochawesome mochawesome-merge mochawesome-report-generator --save-dev
 
-##### Create a file with name: reporter-config.json - 
+#### Create a file with name: reporter-config.json - 
     {
     "reporterEnabled": "spec, cypress-multi-reporters",
     "mochaJunitReporterReporterOptions": {
@@ -607,25 +607,25 @@
         }
     }
 
-##### Merge the reports -
+#### Merge the reports -
     npx mochawesome-merge "cypress/reports/mochawesome/*.json" > mochawesome.json && npx marge mochawesome.json
 
-##### Check the reports -
+#### Check the reports -
     mochawesome-report/mochawesome.html
     
-##### Delete the reports - 
+#### Delete the reports - 
     rm -rf cypress/reports/* || true
     rm -rf mochawesome-report/* || true
 ----------------------------------------------------------------------------------------------------------
 
-#### 2. Multiple Configuration Files:
+### 2. Multiple Configuration Files:
 
-##### Create Folder - config - 
+#### Create Folder - config - 
     Add files - qa.json, staging.json, prod.json
 
-##### Add custom code in cypress config file - 
+#### Add custom code in cypress config file - 
 
-###### at top
+##### at top
     const fs = require('fs-extra');
     const path = require('path');
 
@@ -640,17 +640,17 @@
     return fs.readJson(pathToConfigFile);
     }
 
-###### e2e - setupNodeEvents
+##### e2e - setupNodeEvents
     const file = config.env.configFile || ''
 
     return getConfigurationByFile(file)
 
-##### Run command:
+#### Run command:
     npx cypress open --env configFile=staging
     npx cypress run --spec cypress/e2e/automation-test-store/add-multiple-items-to-basket.js --env configFile=staging
 ----------------------------------------------------------------------------------------------------------
 
-#### 3. Cypress Dashboard: 
+### 3. Cypress Dashboard: 
 
     Go to the - https://cloud.cypress.io/projects/
     Login to Cypress
@@ -662,7 +662,7 @@
     GO the the Dashboard - Latest runs
 ----------------------------------------------------------------------------------------------------------
 
-#### 4. Jenkins:
+### 4. Jenkins:
 
     ▪ Jenkins is a ‘Free Open Source’ automation server.
     ▪ Jenkins aids the process of automating different parts of the software development life cycle such 
@@ -671,9 +671,9 @@
       to trigger automated tests (Framework).
     ▪ Jenkins comes bundled with lots of useful functionality and free plugins.
 
-##### Download & Setup - 
-###### ▪ JDK
-###### ▪ Jenkins - Download 
+#### Download & Setup - 
+##### ▪ JDK
+##### ▪ Jenkins - Download 
          Go to the https://www.jenkins.io/download/
          Select LTS - Generic Java package (.war)
          Go to the path: D:\Testing\Jenkins
@@ -687,39 +687,39 @@
          Instance Configuration 
          Save & Finish 
 
-###### ▪ Install Pulgins 
+##### ▪ Install Pulgins 
          Go to the Manage Jenkins - Plugins 
          GitHub Authentication 
          Github Integration 
          NodeJS
 
-###### ▪ Tools Configuration
+##### ▪ Tools Configuration
          Go to the Manage Jenkins - Tools 
          JDK 
          Git
          NodeJS
 
-###### ▪ Create a Project
+##### ▪ Create a Project
          Go to the New Item - Freestyle project
          Add Source Code Management - Git
          Add Build Steps - Execute Windows batch command
          Parameterized - Choice Parameter
 ----------------------------------------------------------------------------------------------------------
 
-#### 5. Parallelization:
+### 5. Parallelization:
     ▪ If your project has a large number of tests, it can take a long time for tests to complete running serially 
       on one machine. 
     ▪ Running tests in parallel across many virtual machines can save your team time and money when running tests 
       in Continuous Integration (CI).
     ▪ Cypress can run recorded tests in parallel, across multiple machines. 
-![alt text](Images/parallelization-cypress.png)
+   ![alt text](Images/parallelization-cypress.png)
     ▪ Cypress' parallelization strategy is file-based, so in order to utilize parallelization, 
       your tests will need to be split across separate files.
     ▪ Cypress will assign each spec file to an available machine based on balance strategy. 
       Due to this balance strategy, the run order of the spec files is not guaranteed when parallelized.
     ▪ Command to run - cypress run --record --key=abc123 --parallel
     
-##### Setup with Jenkins -
+#### Setup with Jenkins -
     ▪ Configure Jenkins to be accesible from a local network.
     ▪ Setup two Jenkins slaves on a dedicated High end(Powerful) machine.
     ▪ Connect the Jenkins Host to the slave node(s).
@@ -737,7 +737,7 @@
         }
 ----------------------------------------------------------------------------------------------------------
 
-#### 6. Cypress Studio: 
+### 6. Cypress Studio: 
 
     ▪ Cypress Studio is an experimental feature and can be enabled by adding the experimentalStudio attribute to 
       your Cypress configuration.
@@ -760,62 +760,62 @@
         Step 3 - Interact with the Application
 ----------------------------------------------------------------------------------------------------------
 
-#### 7. Cucumber BDD: 
+### 7. Cucumber BDD: 
 
-▪ Cucumber – is a software tool which supports BDD; https://cucumber.io/
-▪ BDD – stands for Behavior-Driven Development.
-▪ It’s a form of development process.
-▪ It aides the process of bridging the gap between technical and non technical parties 
-  (i.e. the Technology team & Product team).
-▪ It is highly suitable for Agile Development Environments and encourages collaboration between teams.
-▪ Keywords:
-        Feature
-        Scenario
-        Backgrond
-        Given 
-        When 
-        Then
-        And
-        But
-        Scenario Outline
-        Example
-        Tags
+    ▪ Cucumber – is a software tool which supports BDD; https://cucumber.io/
+    ▪ BDD – stands for Behavior-Driven Development.
+    ▪ It’s a form of development process.
+    ▪ It aides the process of bridging the gap between technical and non technical parties 
+    (i.e. the Technology team & Product team).
+    ▪ It is highly suitable for Agile Development Environments and encourages collaboration between teams.
+    ▪ Keywords:
+            Feature
+            Scenario
+            Backgrond
+            Given 
+            When 
+            Then
+            And
+            But
+            Scenario Outline
+            Example
+            Tags
         
 
-##### Add custom code in cypress config file - 
+#### Add custom code in cypress config file - 
 
-##### Command to run: 
+#### Command to run: 
     npm install --save-dev cypress-cucumber-preprocessor
 
-###### at top
+##### at top
     const cucumber = require('cypress-cucumber-preprocessor').default;
 
-###### e2e - setupNodeEvents
+##### e2e - setupNodeEvents
     const cucumber = require('cypress-cucumber-preprocessor').default;
 
 
-##### Add custom code in package.json file - 
+#### Add custom code in package.json file - 
     "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
     "stepDefinitions": "cypress/support/step_definitions"
     }
 
 
-##### Add vs code extention 'Cucumber (Gherkin) Full Support'- 
+#### Add vs code extention 'Cucumber (Gherkin) Full Support'- 
 
 
-##### Go to the File > Preferences > Settings > Extentions > Cucumber Auto Complete Settings > Edit - 
+#### Go to the File > Preferences > Settings > Extentions > Cucumber Auto Complete Settings > Edit - 
     "cucumberautocomplete.strictGherkinCompletion": true,
     "cucumberautocomplete.steps": [
         "cypress/support/step_definitions/*.js"
     ]
 
 
-##### Command to run:
+#### Command to run:
     npx cypress run --spec 'cypress/e2e/webdriver-uni/features/*.feature' -e TAGS=\"@regression\" --headed --browser chrome
 ----------------------------------------------------------------------------------------------------------
        
-#### 8. API Testing: 
+### 8. API Testing: 
 
     Components - 
     URL - Also known as endpoint (HTTPS link), for example: /{country}/weather
@@ -838,30 +838,30 @@
     ▪ Cypress has the ability to act as a middleman to intercept API calls.
     ▪ We can provide mocked responses for specific API’s eliminating the need to rely on the backend server; 
       in the process increasing the speed of tests. 
-![alt text](<Images/API Testing With Cypress.png>)
+   ![alt text](<Images/API Testing With Cypress.png>)
 ----------------------------------------------------------------------------------------------------------
 
-#### 8. Cypress Installation & Setup: 
-▪ Install Node.js and NPM
-    node -v
-    npm -v
+### 8. Cypress Installation & Setup: 
+    ▪ Install Node.js and NPM
+        node -v
+        npm -v
 
-▪  Initialize a New Project
-    mkdir my-cypress-project
-    cd my-cypress-project
-    npm init -y
+    ▪  Initialize a New Project
+        mkdir my-cypress-project
+        cd my-cypress-project
+        npm init -y
 
-▪  Install Cypress
-    npm install cypress --save-dev
+    ▪  Install Cypress
+        npm install cypress --save-dev
 
-▪  Open Cypress
-    npx cypress open
+    ▪  Open Cypress
+        npx cypress open
 
-▪  Write Your First Test
-    In the cypress/e2e folder, create a new test file, e.g., example_spec.js
+    ▪  Write Your First Test
+        In the cypress/e2e folder, create a new test file, e.g., example_spec.js
 
-▪  Run the Test
-    After writing the test, run it through the Cypress Test Runner by clicking on the test file in the Cypress UI.
-    npx cypress run cypress/e2e/example_spec.js
+    ▪  Run the Test
+        After writing the test, run it through the Cypress Test Runner by clicking on the test file in the Cypress UI.
+        npx cypress run cypress/e2e/example_spec.js
 ----------------------------------------------------------------------------------------------------------
 
