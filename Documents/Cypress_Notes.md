@@ -41,8 +41,8 @@ Disadvantages:
    execute the code on server or machine.
 3. for ex: jdk/jrk is for java, similarly nodejs for javascript.
 
-![alt text](<Cypress Architecture.png>)
-![alt text](<Selenium Architecture.png>)
+![alt text](<Images/Cypress Architecture.png>)
+![alt text](<Images/Selenium Architecture.png>)
 
 1. cypress is build over & runs on node js & it only supports javascript.
 2. Most testing tools (like Selenium) operate by running outside of the browser.
@@ -55,7 +55,7 @@ Disadvantages:
 8. In Cypress - all the commands executed within the browser.
 9. Cypress’ architecture is mainly divided into 3 main components: Test Runner, Cypress Server, Browser.
 
-![alt text](<Cypress Architectures.png>)
+![alt text](<Images/Cypress Architectures.png>)
 
 1. Firstly, the NodeJS server launches a browser with a proxy. 
 2. Then, The browser is set up with two iframes: one for Cypress and another for the application 

@@ -712,7 +712,7 @@
     ▪ Running tests in parallel across many virtual machines can save your team time and money when running tests 
       in Continuous Integration (CI).
     ▪ Cypress can run recorded tests in parallel, across multiple machines. 
-    ▪ ![alt text](parallelization-cypress.png)
+![alt text](Images/parallelization-cypress.png)
     ▪ Cypress' parallelization strategy is file-based, so in order to utilize parallelization, 
       your tests will need to be split across separate files.
     ▪ Cypress will assign each spec file to an available machine based on balance strategy. 
@@ -838,7 +838,7 @@
     ▪ Cypress has the ability to act as a middleman to intercept API calls.
     ▪ We can provide mocked responses for specific API’s eliminating the need to rely on the backend server; 
       in the process increasing the speed of tests. 
-    ▪ ![alt text](<API Testing With Cypress.png>)
+![alt text](<Images/API Testing With Cypress.png>)
 ----------------------------------------------------------------------------------------------------------
 
 #### 8. Cypress Installation & Setup: 
