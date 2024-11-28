@@ -22,7 +22,7 @@
         })
 ----------------------------------------------------------------------------------------------------------
 
-#### 4. Browser Navigations:
+### 4. Browser Navigations:
     cy.visit("https://www.webdriveruniversity.com/");
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
     cy.go('back');
@@ -30,16 +30,16 @@
     cy.go('forward');
 ----------------------------------------------------------------------------------------------------------
 
-#### 5. Javascript Alert Popup: 
+### 5. Javascript Alert Popup: 
     cy.get('#button1').click();
     cy.on('window:alert', (str) =>{
     expect(str).to.equal('I am an alert box!');
     })
 ----------------------------------------------------------------------------------------------------------
 
-#### 6. Javascript Confirm Popup: 
+### 6. Javascript Confirm Popup: 
 
-##### Select Ok/true -
+#### Select Ok/true -
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
         return true;  
@@ -47,7 +47,7 @@
     cy.get('#confirm-alert-text').contains('You pressed Ok!');
 
 
- ##### Select Cancel/false -
+#### Select Cancel/false -
     cy.get('#button4').click();
     cy.on('window:confirm', (str) => {
         return false;  
@@ -55,31 +55,31 @@
     cy.get('#confirm-alert-text').contains('You pressed Cancel!');
 ----------------------------------------------------------------------------------------------------------
 
-#### 7. Handle Checkboxes: 
+### 7. Handle Checkboxes: 
 
-##### Check the checkbox -
+#### Check the checkbox -
     cy.get('#checkboxes > :nth-child(1) > input').as('option-1')
     cy.get('@option-1').check().should('be.checked');
 
 
-##### Uncheck the checkbox -
+#### Uncheck the checkbox -
     cy.get(':nth-child(5) > input').as('option-3')
     cy.get('@option-3').uncheck().should('not.be.checked');    
 
 
-##### Check the multiple checkbox -
+#### Check the multiple checkbox -
     cy.get('input[type="checkbox"]').check(['option-1', 'option-2', 'option-3', 'option-4'])
         .should('be.checked');
 ----------------------------------------------------------------------------------------------------------
 
-#### 8. Handle Radio buttons:
+### 8. Handle Radio buttons:
 
-##### no option is selected/disabled -
+#### no option is selected/disabled -
     cy.get('#radio-buttons').find('[type="radio"]').first().check();
     cy.get('#radio-buttons').find('[type="radio"]').eq(1).check();
 
 
-##### options are already selected/disabled -
+#### options are already selected/disabled -
     cy.get('[value="lettuce"]').should('not.be.checked');
     cy.get('[value="cabbage"]').should('be.disabled');
     cy.get('[value="pumpkin"]').should('be.checked');
@@ -88,17 +88,17 @@
     cy.get('[value="pumpkin"]').should('not.be.checked');
 ----------------------------------------------------------------------------------------------------------
 
-#### 9. Handle Dropdown lists: 
+### 9. Handle Dropdown lists: 
 
-##### based on value tag -
+#### based on value tag -
     cy.get('#dropdowm-menu-1').select('python').should('have.value', 'python');
 
 
-##### based on text -
+#### based on text -
     cy.get('#dropdowm-menu-2').select('TestNG').contains('TestNG');
 ----------------------------------------------------------------------------------------------------------
 
-#### 10. Handle iFrames:
+### 10. Handle iFrames:
     cy.get('#frame').then($iframe => {
     const body = $iframe.contents().find('body');
     cy.wrap(body).as('iframe');
