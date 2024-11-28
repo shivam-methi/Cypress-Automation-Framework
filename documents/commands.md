@@ -411,53 +411,53 @@
     cy.get('[name="first_name"]').type('John').pause(10000);
 ----------------------------------------------------------------------------------------------------------
 
-#### 27. Capture Screenshots & Videos:
+### 27. Capture Screenshots & Videos:
 
-##### Screenshots - 
+#### Screenshots - 
 
-##### add command in cypress.config.js file under e2e setup -
+#### add command in cypress.config.js file under e2e setup -
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
-###### screenshots will only work with 'cypress run' command using CLI
-###### default folder 'cypress/screenshots'
+##### screenshots will only work with 'cypress run' command using CLI
+##### default folder 'cypress/screenshots'
 
-##### add command in cypress.config.js file under e2e setup -    
+#### add command in cypress.config.js file under e2e setup -    
     screenshotOnRunFailure: true,
     trashAssetsBeforeRuns: true,
 
-##### on failure - capture automatically 
+#### on failure - capture automatically 
     
-##### on even success - 
+#### on even success - 
     cy.screenshot('success');
 
 
-##### Videos -
+#### Videos -
 
-###### vidoes will only work with 'cypress run' command using CLI
-###### default folder 'cypress/video'
+##### vidoes will only work with 'cypress run' command using CLI
+##### default folder 'cypress/video'
 
-##### add command in cypress.config.js file under e2e setup to stop to record -
+#### add command in cypress.config.js file under e2e setup to stop to record -
     video: false
 ----------------------------------------------------------------------------------------------------------
 
-#### 28. Setup Viewport: 
+### 28. Setup Viewport: 
 
-##### add command in cypress.config.js file under e2e setup -
-###### it will be applied globally
+#### add command in cypress.config.js file under e2e setup -
+##### it will be applied globally
     
     viewportHeight: 1080,
     viewportWidth: 1920,
 
 
-##### to apply to a specific spec use command -
+#### to apply to a specific spec use command -
         cy.viewport(550, 750);
 ----------------------------------------------------------------------------------------------------------
 
-#### 29. Retry: 
+### 29. Retry: 
 
-##### add command in cypress.config.js file under e2e setup -
-###### it will be applied globally 
+#### add command in cypress.config.js file under e2e setup -
+##### it will be applied globally 
     
     retries:{
       runMode: 0,
@@ -465,7 +465,7 @@
     },
 
 
-##### to apply to a specific spec use command -
+#### to apply to a specific spec use command -
 
     it("Retries on failure", {
         retries: {
@@ -477,43 +477,43 @@
     })
 ----------------------------------------------------------------------------------------------------------
 
-#### 30. Timeouts:
+### 30. Timeouts:
 
-##### Default command timeout for specific test -
+#### Default command timeout for specific test -
     Cypress.config('defaultCommandTimeout', 20000);
 
     
-##### URL Timeouts -
+#### URL Timeouts -
     cy.visit(("https://www.webdriveruniversity.com/"), { timeout: 10000 });
 
         
-##### Command Timeouts -
+#### Command Timeouts -
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true }, { timeout: 10000 });
 
         
-##### Assertion Timeouts -
+#### Assertion Timeouts -
     cy.get('[name="first_name"]').type('John').should('be.visible', { timeout: 10000 });
 ----------------------------------------------------------------------------------------------------------
 
-#### 31. Specific Browser:
+### 31. Specific Browser:
 
     if (Cypress.isBrowser('electron')) {
             cy.log('TEST RUNNING IN ELECTRON BROWSER!!');
         }
 ----------------------------------------------------------------------------------------------------------
 
-#### 32. Read data from excel:
+### 32. Read data from excel:
 
-##### Command to run - 
+#### Command to run - 
     npm install xlsx
 
-##### Add custom code in cypress config file - 
+#### Add custom code in cypress config file - 
 
-###### at top
+##### at top
     const { writeFileSync } = require('fs');
     const XLSX = require('xlsx');
 
-##### at e2e - setupNodeEvents 
+#### at e2e - setupNodeEvents 
     on('task', {
         convertXlsxToJson(filePath) {
           const workbook = XLSX.readFile(filePath);
@@ -528,11 +528,11 @@
     })
 
 
-##### Create & add a excel file in /fixtures/excel - 
+#### Create & add a excel file in /fixtures/excel - 
     companies.xlsx
 
 
-##### using the commands into the test files -
+#### using the commands into the test files -
     before(() => {
             // Check if the file exists first
             cy.task('convertXlsxToJson', xlsxPath).then((jsonFilePath) => {
