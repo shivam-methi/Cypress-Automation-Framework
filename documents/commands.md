@@ -113,7 +113,7 @@
     cy.get('@model').contains('Close').click();
 ----------------------------------------------------------------------------------------------------------
 
-#### 11. Autocomplete(Suggested) Lists:
+### 11. Autocomplete(Suggested) Lists:
     cy.get('#myInputautocomplete-list > *').each(($el, index, $list) => {
         const prod = $el.text();
         const productToSelect = 'Avacado';
@@ -126,97 +126,97 @@
         })
 ----------------------------------------------------------------------------------------------------------
 
-#### 12. Mouse Actions - ScrollIntoView:
+### 12. Mouse Actions - ScrollIntoView:
     cy.get('#actions').scrollIntoView().click();
 ----------------------------------------------------------------------------------------------------------
 
-#### 13. Mouse Actions - Drag & Drop: 
+### 13. Mouse Actions - Drag & Drop: 
     cy.get('#draggable').trigger('mousedown', { which: 1 });
     cy.get('#droppable').trigger('mousemove').trigger('mouseup', { force: true });
 ----------------------------------------------------------------------------------------------------------
 
-#### 14. Mouse Actions - Double Cilck: 
+### 14. Mouse Actions - Double Cilck: 
     cy.get('#double-click').dblclick();
 ----------------------------------------------------------------------------------------------------------
 
-#### 15. Mouse Actions - Click & Hold: 
+### 15. Mouse Actions - Click & Hold: 
     cy.get('#click-box').trigger('mousedown', { which: 1 }).then(($element) => {
     expect($element).to.have.css('background-color', 'rgb(0, 255, 0)');
     })
 ----------------------------------------------------------------------------------------------------------
 
-#### 16. File Upload: 
+### 16. File Upload: 
     cy.get('#myFile').selectFile('cypress/fixtures/cypress-architecture.png');
     cy.get('#submit-button').click();
 ----------------------------------------------------------------------------------------------------------
 
-#### 17. Traversing Elements:
+### 17. Traversing Elements:
 
-##### children - 
+#### children - 
     cy.get('.traversal-breadcrumb').children('.active').should('contain', 'Contact Us');
 
 
-##### closest - 
+#### closest - 
     cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group');
 
 
-##### eq - 
+#### eq - 
     cy.get('.traversal-drinks-list > *').eq(2).should('contain', 'Milk');
 
 
-##### filter - 
+#### filter - 
     cy.get('.btn-group-toggle > *').filter('.active').should('contain', 'Button-1');
 
 
-##### find - 
+#### find - 
     cy.get('.traversal-pagination').find('li').find('a').should('have.length', 7);
 
 
-##### first - 
+#### first - 
     cy.get('.traversal-table > tbody > tr > td').first().should('contain', 'Andy');
 
 
-##### last - 
+#### last - 
     cy.get('.traversal-table > tbody > tr > td').last().should('contain', 'Scott');
 
 
-##### nextAll -
+#### nextAll -
     cy.get('.traversal-drinks-list').contains('Tea').nextAll().should('have.length', 3);
 
 
-##### nextUntil - 
+#### nextUntil - 
     cy.get('#coffee').nextUntil('#milk');
 
 
-##### not - 
+#### not - 
     cy.get('.traversal-button-states > button').not('.disabled').should('not.have.class', 'disabled');
 
 
-##### parent - 
+#### parent - 
     cy.get('.traversal-mark').parent().should('contain', 'Lorem ipsum dolor sit amet');
 
 
-##### parents - 
+#### parents - 
     cy.get('.traversal-cite').parents().should('match', 'blockquote');
 
 
-##### prev - 
+#### prev - 
     cy.get('#sugar').prev().contains('Espresso');
 
 
-##### prevAll - 
+#### prevAll - 
     cy.get('.sales').prevAll().should('have.length', 2);
 
 
-##### prevUntil - 
+#### prevUntil - 
     cy.get('#veggie').prevUntil('#fruits').should('have.length', 5);
 
 
-##### siblings - 
+#### siblings - 
     cy.get('.traversal-button-other-states .active').siblings().should('have.length', 3);
 ----------------------------------------------------------------------------------------------------------
 
-#### 18. Handle Date picker: 
+### 18. Handle Date picker: 
     cy.get('#datepicker > input').click();
 
     var date = new Date();
@@ -254,7 +254,7 @@
     selectFutureDay();
 ----------------------------------------------------------------------------------------------------------
 
-#### 19. Handle Data table:
+### 19. Handle Data table:
     var userDetails = [];
     let num = 0;
     cy.get('#thumbnail-1 td').each(($el, index, $list) => {
@@ -271,32 +271,32 @@
             expect(num).to.eq(322);
 ----------------------------------------------------------------------------------------------------------
 
-#### 20. Alias invoke: 
+### 20. Alias invoke: 
     cy.get('.fixed_wrapper .prdocutname').eq(0).invoke('text').as('productThumbnail');
     cy.get('@productThumbnail').its('length').should('be.gt', 5);
 ----------------------------------------------------------------------------------------------------------
 
-#### 21. Hooks: 
+### 21. Hooks: 
 
-##### before -
+#### before -
     before(() => {
     cy.log("runs once before all tests in the block");
     });
 
 
-##### after -
+#### after -
     after(() => {
     cy.log("runs once after all tests in the block");
     });
 
 
-##### beforeEach -
+#### beforeEach -
     beforeEach(() => {
     cy.log("runs before each test in the block");
     });
 
 
-##### afterEach -
+#### afterEach -
     afterEach(() => {
     cy.log("runs after each test in the block");
     });
