@@ -841,7 +841,7 @@
    ![alt text](<Images/API Testing With Cypress.png>)
 ----------------------------------------------------------------------------------------------------------
 
-### 8. Cypress Installation & Setup: 
+### 9. Cypress Installation & Setup: 
     ▪ Install Node.js and NPM
         node -v
         npm -v
