@@ -1,5 +1,5 @@
-import HomePage_PO from "../../../support/TDD/pageObjects/webdriver-uni/Homepage_po";
-import ContactUsPage_PO from "../../../support/TDD/pageObjects/webdriver-uni/ContactUspage_po";
+import HomePage_PO from "../../../../support/TDD/pageObjects/webdriver-uni/Homepage_po";
+import ContactUsPage_PO from "../../../../support/TDD/pageObjects/webdriver-uni/ContactUspage_po";
 
 describe("Test Contact Us form via WebdriverUni", () => {
     Cypress.config('defaultCommandTimeout', 2000);

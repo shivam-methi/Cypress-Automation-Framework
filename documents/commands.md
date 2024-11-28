@@ -797,7 +797,7 @@
 #### Add custom code in package.json file - 
     "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": false,
-    "stepDefinitions": "cypress/support/step_definitions"
+    "stepDefinitions": "cypress/support/BDD/step_definitions/**"
     }
 
 
@@ -807,12 +807,12 @@
 #### Go to the File > Preferences > Settings > Extentions > Cucumber Auto Complete Settings > Edit - 
     "cucumberautocomplete.strictGherkinCompletion": true,
     "cucumberautocomplete.steps": [
-        "cypress/support/step_definitions/*.js"
+        "cypress/support/BDD/step_definitions/**/*.js"
     ]
 
 
 #### Command to run:
-    npx cypress run --spec 'cypress/e2e/webdriver-uni/features/*.feature' -e TAGS=\"@regression\" --headed --browser chrome
+    npx cypress run --spec 'cypress/e2e/BDD/feature/webdriver-uni/*.feature' -e TAGS=\"@regression\" --headed --browser chrome
 ----------------------------------------------------------------------------------------------------------
        
 ### 8. API Testing: 
