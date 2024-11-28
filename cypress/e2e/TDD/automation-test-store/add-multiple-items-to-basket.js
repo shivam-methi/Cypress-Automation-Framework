@@ -1,5 +1,5 @@
-import AutoStore_Homepage_PO from "../../support/pageObjects/automation-test-store/Autostore_HomePage_po";
-import AutoStore_HairCarepage_PO from "../../support/pageObjects/automation-test-store/AutoStore_HairCarepage_po";
+import AutoStore_Homepage_PO from "../../../support/TDD/pageObjects/automation-test-store/Autostore_HomePage_po";
+import AutoStore_HairCarepage_PO from "../../../support/TDD/pageObjects/automation-test-store/AutoStore_HairCarepage_po";
 
 describe("Add multiple items to basket", () => {
 
