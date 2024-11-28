@@ -146,7 +146,7 @@
 ----------------------------------------------------------------------------------------------------------
 
 ### 16. File Upload: 
-    cy.get('#myFile').selectFile('cypress/fixtures/cypress-architecture.png');
+    cy.get('#myFile').selectFile('documents/Images/cypress-architecture.png');
     cy.get('#submit-button').click();
 ----------------------------------------------------------------------------------------------------------
 
