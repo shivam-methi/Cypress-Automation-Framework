@@ -1,18 +1,18 @@
-## COMMANDS::
+## Commands:
 ----------------------------------------------------------------------------------------------------------
 
-#### 1. Iteration of items: 
+### 1. Iteration of items: 
     cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
                 if ($el.text().includes('Curls to straight Shampoo')) {
                     cy.wrap($el).click();
                 }
 ----------------------------------------------------------------------------------------------------------
 
-#### 2. Handling Multiple tabs - Remove target attribute:
+### 2. Handling Multiple tabs - Remove target attribute:
     cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
 ----------------------------------------------------------------------------------------------------------
 
-#### 3. Origin Policy: 
+### 3. Different Origin Policy: 
     cy.origin('webdriveruniversity.com', () => {
             cy.visit("/");
         })
