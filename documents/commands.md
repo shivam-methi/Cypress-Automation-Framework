@@ -553,6 +553,36 @@
         cy.log('JSON data:', JSON.stringify(jsonData));
     });
 ----------------------------------------------------------------------------------------------------------
+
+### 33. Multiple Configuration Files:
+
+#### Create Folder - config - 
+    Add files - qa.json, staging.json, prod.json
+
+#### Add custom code in cypress config file - 
+
+##### at top
+    const fs = require('fs-extra');
+    const path = require('path');
+
+##### e2e - setupNodeEvents
+    const environment = config.env.environment || 'qa'; // Default to QA
+    const filePath = path.resolve('cypress/config', `${environment}.json`);
+
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`Environment file not found: ${filePath}`);
+    }
+
+    const envConfig = require(filePath);
+    return { ...config, env: { ...config.env, ...envConfig } };
+
+#### Command use in spec file:
+    cy.visit(Cypress.env('baseUrl'));
+
+#### Run command:
+    npx cypress open --env environment=staging
+    npx cypress run --spec cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js --env environment=staging
+----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 
 ### 1. Reports:
@@ -618,39 +648,7 @@
     rm -rf mochawesome-report/* || true
 ----------------------------------------------------------------------------------------------------------
 
-### 2. Multiple Configuration Files:
-
-#### Create Folder - config - 
-    Add files - qa.json, staging.json, prod.json
-
-#### Add custom code in cypress config file - 
-
-##### at top
-    const fs = require('fs-extra');
-    const path = require('path');
-
-    function getConfigurationByFile(file) {
-    const pathToConfigFile = path.resolve('cypress\\config', `${file}.json`)
-
-    if (!fs.existsSync(pathToConfigFile)) {
-        console.log("No custom config file found.");
-        return {};
-    }
-
-    return fs.readJson(pathToConfigFile);
-    }
-
-##### e2e - setupNodeEvents
-    const file = config.env.configFile || ''
-
-    return getConfigurationByFile(file)
-
-#### Run command:
-    npx cypress open --env configFile=staging
-    npx cypress run --spec cypress/e2e/automation-test-store/add-multiple-items-to-basket.js --env configFile=staging
-----------------------------------------------------------------------------------------------------------
-
-### 3. Cypress Dashboard: 
+### 2. Cypress Dashboard: 
 
     Go to the - https://cloud.cypress.io/projects/
     Login to Cypress
@@ -662,7 +660,7 @@
     GO the the Dashboard - Latest runs
 ----------------------------------------------------------------------------------------------------------
 
-### 4. Jenkins:
+### 3. Jenkins:
 
     ▪ Jenkins is a ‘Free Open Source’ automation server.
     ▪ Jenkins aids the process of automating different parts of the software development life cycle such 
@@ -706,7 +704,7 @@
          Parameterized - Choice Parameter
 ----------------------------------------------------------------------------------------------------------
 
-### 5. Parallelization:
+### 4. Parallelization:
     ▪ If your project has a large number of tests, it can take a long time for tests to complete running serially 
       on one machine. 
     ▪ Running tests in parallel across many virtual machines can save your team time and money when running tests 
@@ -737,7 +735,7 @@
         }
 ----------------------------------------------------------------------------------------------------------
 
-### 6. Cypress Studio: 
+### 5. Cypress Studio: 
 
     ▪ Cypress Studio is an experimental feature and can be enabled by adding the experimentalStudio attribute to 
       your Cypress configuration.
@@ -760,7 +758,7 @@
         Step 3 - Interact with the Application
 ----------------------------------------------------------------------------------------------------------
 
-### 7. Cucumber BDD: 
+### 6. Cucumber BDD: 
 
     ▪ Cucumber – is a software tool which supports BDD; https://cucumber.io/
     ▪ BDD – stands for Behavior-Driven Development.
@@ -815,7 +813,7 @@
     npx cypress run --spec 'cypress/e2e/BDD/feature/webdriver-uni/*.feature' -e TAGS=\"@regression\" --headed --browser chrome
 ----------------------------------------------------------------------------------------------------------
        
-### 8. API Testing: 
+### 7. API Testing: 
 
     Components - 
     URL - Also known as endpoint (HTTPS link), for example: /{country}/weather
@@ -841,7 +839,7 @@
    ![alt text](<Images/API Testing With Cypress.png>)
 ----------------------------------------------------------------------------------------------------------
 
-### 9. Cypress Installation & Setup: 
+### 8. Cypress Installation & Setup: 
 
     ▪ Install Node.js and NPM
         node -v

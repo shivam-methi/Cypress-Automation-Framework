@@ -1,6 +1,4 @@
 {
-    "baseUrl": "https://www.automationteststore.com/",
-    "env": {
-        "name": "Joe"
-    }
+    "baseUrl": "https://client.morag.click/",
+    "name": "staging"
 }

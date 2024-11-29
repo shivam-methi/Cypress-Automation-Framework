@@ -5,16 +5,16 @@ const path = require('path');
 const cucumber = require('cypress-cucumber-preprocessor').default;
 const XLSX = require('xlsx');
 
-function getConfigurationByFile(file) {
-  const pathToConfigFile = path.resolve('cypress\\config', `${file}.json`)
+// function getConfigurationByFile(file) {
+//   const pathToConfigFile = path.resolve('cypress\\config', `${file}.json`)
 
-  if (!fs.existsSync(pathToConfigFile)) {
-    console.log("No custom config file found.");
-    return {};
-  }
+//   if (!fs.existsSync(pathToConfigFile)) {
+//     console.log("No custom config file found.");
+//     return {};
+//   }
 
-  return fs.readJson(pathToConfigFile);
-}
+//   return fs.readJson(pathToConfigFile);
+// }
 
 module.exports = defineConfig({
   projectId: '5guftj',
@@ -34,9 +34,16 @@ module.exports = defineConfig({
       })
       on('file:preprocessor', cucumber())
       // implement node event listeners here
-      const file = config.env.configFile || ''
+     
+      const environment = config.env.environment || 'qa'; // Default to QA
+      const filePath = path.resolve('cypress/config', `${environment}.json`);
 
-      return getConfigurationByFile(file)
+      if (!fs.existsSync(filePath)) {
+        throw new Error(`Environment file not found: ${filePath}`);
+      }
+
+      const envConfig = require(filePath);
+      return { ...config, env: { ...config.env, ...envConfig } };
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     // excludeSpecPattern: "cypress/e2e/other/*.js",
