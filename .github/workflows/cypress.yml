@@ -29,7 +29,7 @@ jobs:
 
     # Run Cypress tests
     - name: Run Cypress Tests
-      run: npm triggerAllTests-headless
+      run: npm run triggerAllTests-headless
 
     # Save Cypress Videos and Screenshots (optional)
     - name: Upload Artifacts
