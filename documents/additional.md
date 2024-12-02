@@ -90,13 +90,13 @@ cy.get("tr td:nth-child(2))                                             ---Here 
 NEED TO WORK ON::
 keyboard keys 
 ~~screenshot~~
-fixtures - data driven from external source 
+~~fixtures - data driven from external source~~
 ~~env files - default, create separate for diff env - QA, Staging~~
 create custom commands 
-page objects
+~~page objects~~
 ~~retry~~
 ~~reports~~
-config options
+~~config options~~
 ~~integration with git/jenkins~~
 ~~run with dashboard/cloud~~
 ~~pause/debug~~
@@ -108,7 +108,15 @@ mocking
 ~~dashboard~~
 assertions
 tags
-bdd
+~~bdd~~
 ~~file upload~~
 ~~iframe~~
+cross browser testing
+lint 
+run travis ci on github
+branch strategy 
+CI strategy
+env file
+notification - integrate with email/slack
+
 
