@@ -864,3 +864,74 @@
         npx cypress run cypress/e2e/example_spec.js
 ----------------------------------------------------------------------------------------------------------
 
+### 9. Integrate CI/CD for Cypress in GitHub: 
+
+#### Set Up GitHub Actions: 
+    ▪ Navigate to your GitHub repository.
+    ▪ Go to Settings > Actions > Ensure actions are enabled for the repository.
+    ▪ Create a GitHub Actions workflow file:
+        ▪ In your repository, go to Actions.
+        ▪ Click New Workflow, then choose Set up a workflow yourself.
+        ▪ Save the workflow file as `.github/workflows/cypress.yml`.
+  
+
+#### Create a cypress.yml File at path .github/workflows/cypress.yml:
+    name: Cypress Tests
+
+    on:
+    push:
+        branches:
+        - main
+    pull_request:
+        branches:
+        - main
+
+    jobs:
+    cypress-run:
+        runs-on: ubuntu-latest
+
+        steps:
+        # Checkout the repository
+        - name: Checkout Code
+        uses: actions/checkout@v3
+
+        # Set up Node.js
+        - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: 20
+
+        # Install dependencies
+        - name: Install Dependencies
+        run: npm install
+
+        # Run Cypress tests
+        - name: Run Cypress Tests
+        run: npm run test
+
+        # Save Cypress Videos and Screenshots (optional)
+        - name: Upload Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+            name: cypress-results
+            path: |
+            cypress/videos
+            cypress/screenshots
+
+        env:
+        CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
+        API_KEY: ${{ secrets.API_KEY }}
+
+
+#### Configure Environment Variables (Optional): 
+    ▪ Go to Settings > Secrets and variables > Actions > New repository secret.
+    ▪ Add secrets like CYPRESS_BASE_URL, API_KEY, etc.
+
+
+#### Run the Workflow:
+    ▪ Push the changes to your repository.
+    ▪ GitHub Actions will trigger the workflow on the defined events (e.g., push or pull_request).
+    ▪ Monitor the progress in the Actions tab of your repository.
+----------------------------------------------------------------------------------------------------------
+
