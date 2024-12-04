@@ -118,5 +118,5 @@ branch strategy
 CI strategy
 env file
 notification - integrate with email/slack
-
+gitignore
 
