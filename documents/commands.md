@@ -507,13 +507,14 @@
 #### Command to run - 
     npm install xlsx
 
+
 #### Add custom code in cypress config file - 
 
-##### at top
+##### at top:
     const { writeFileSync } = require('fs');
     const XLSX = require('xlsx');
 
-#### at e2e - setupNodeEvents 
+#### at e2e - setupNodeEvents: 
     on('task', {
         convertXlsxToJson(filePath) {
           const workbook = XLSX.readFile(filePath);
@@ -559,13 +560,14 @@
 #### Create Folder - config - 
     Add files - qa.json, staging.json, prod.json
 
+
 #### Add custom code in cypress config file - 
 
-##### at top
+##### at top:
     const fs = require('fs-extra');
     const path = require('path');
 
-##### e2e - setupNodeEvents
+##### e2e - setupNodeEvents:
     const environment = config.env.environment || 'qa'; // Default to QA
     const filePath = path.resolve('cypress/config', `${environment}.json`);
 
@@ -576,12 +578,69 @@
     const envConfig = require(filePath);
     return { ...config, env: { ...config.env, ...envConfig } };
 
+
 #### Command use in spec file:
     cy.visit(Cypress.env('baseUrl'));
 
+
 #### Run command:
     npx cypress open --env environment=staging
-    npx cypress run --spec cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js --env environment=staging
+    npx cypress run --spec cypress/e2e/COMMANDS/33.multiple-configuration.js --headed --browser chrome --env environment=STAGING
+----------------------------------------------------------------------------------------------------------
+
+### 34. Environment Access using dotenv/.env file:
+
+#### Run command:
+    npm install dotenv
+
+
+#### Create File - .env - add data:
+    # Base URLs for different environments
+    QA_BASE_URL=https://client.votercircle.net/
+    STAGING_BASE_URL=https://client.morag.click/
+    PROD_BASE_URL=https://client.outreachcircle.com/
+
+    # Current environment (default: QA)
+    ENV=QA
+
+
+#### Add custom code in cypress config file - 
+
+##### at top:
+    const dotenv = require('dotenv');
+
+##### e2e - setupNodeEvents:
+    const env = config.env.ENV || 'QA';
+
+    const envConfig = {
+        QA: process.env.QA_BASE_URL,
+        STAGING: process.env.STAGING_BASE_URL,
+        PROD: process.env.PROD_BASE_URL,
+    };
+
+    if (!envConfig[env]) {
+        throw new Error(`Invalid environment: ${env}. Must be one of QA, STAGING, or PROD.`);
+    }
+
+    // Dynamically set the baseUrl
+    config.baseUrl = envConfig[env];
+
+    // Pass all environment variables into Cypress.env for logging
+    config.env.QA_BASE_URL = process.env.QA_BASE_URL;
+    config.env.STAGING_BASE_URL = process.env.STAGING_BASE_URL;
+    config.env.PROD_BASE_URL = process.env.PROD_BASE_URL;
+
+    console.log(`Running tests with baseUrl: ${config.baseUrl}`);
+    return config;
+
+
+#### Command use in spec file:
+    cy.visit(Cypress.config('baseUrl'));
+
+
+#### Run command:
+    npx cypress open --env ENV=QA
+    npx cypress run --spec cypress/e2e/COMMANDS/34.environment-using-dotenv.js --headed --browser chrome --env ENV=QA
 ----------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------
 

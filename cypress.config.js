@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const { defineConfig } = require("cypress");
 const { writeFileSync } = require("fs");
 const fs = require('fs-extra');
@@ -5,45 +6,79 @@ const path = require('path');
 const cucumber = require('cypress-cucumber-preprocessor').default;
 const XLSX = require('xlsx');
 
-// function getConfigurationByFile(file) {
-//   const pathToConfigFile = path.resolve('cypress\\config', `${file}.json`)
-
-//   if (!fs.existsSync(pathToConfigFile)) {
-//     console.log("No custom config file found.");
-//     return {};
-//   }
-
-//   return fs.readJson(pathToConfigFile);
-// }
+// Load environment variables from .env file
+dotenv.config();
 
 module.exports = defineConfig({
   projectId: '5guftj',
   e2e: {
     setupNodeEvents(on, config) {
-      on('task', {
-        convertXlsxToJson(filePath) {
-          const workbook = XLSX.readFile(filePath);
-          const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-          const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-          const fileName = path.basename(filePath, '.xlsx');
-          const jsonFilePath = `./cypress/fixtures/${fileName}.json`;
-          writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2));
-          return jsonFilePath;
+      // First Configuration 
+      (() => {
+
+        // Add XLSX to JSON task
+        on('task', {
+          convertXlsxToJson(filePath) {
+            const workbook = XLSX.readFile(filePath);
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+            const fileName = path.basename(filePath, '.xlsx');
+            const jsonFilePath = `./cypress/fixtures/${fileName}.json`;
+            writeFileSync(jsonFilePath, JSON.stringify(jsonData, null, 2));
+            return jsonFilePath;
+          }
+        });
+
+        // Add cucumber preprocessor
+        on('file:preprocessor', cucumber());
+
+        //this configurations is useful 
+        // when you have to utilize dotenv/.env file 
+        const env = config.env.ENV || 'QA';
+
+        const envConfig = {
+          QA: process.env.QA_BASE_URL,
+          STAGING: process.env.STAGING_BASE_URL,
+          PROD: process.env.PROD_BASE_URL,
+        };
+
+        if (!envConfig[env]) {
+          throw new Error(`Invalid environment: ${env}. Must be one of QA, STAGING, or PROD.`);
         }
-      })
-      on('file:preprocessor', cucumber())
-      // implement node event listeners here
-     
-      const environment = config.env.environment || 'qa'; // Default to QA
-      const filePath = path.resolve('cypress/config', `${environment}.json`);
 
-      if (!fs.existsSync(filePath)) {
-        throw new Error(`Environment file not found: ${filePath}`);
-      }
+        // Dynamically set the baseUrl
+        config.baseUrl = envConfig[env];
 
-      const envConfig = require(filePath);
-      return { ...config, env: { ...config.env, ...envConfig } };
+        // Pass all environment variables into Cypress.env for logging
+        config.env.QA_BASE_URL = process.env.QA_BASE_URL;
+        config.env.STAGING_BASE_URL = process.env.STAGING_BASE_URL;
+        config.env.PROD_BASE_URL = process.env.PROD_BASE_URL;
+
+        console.log(`Running tests with baseUrl: ${config.baseUrl}`);
+      })();
+
+      /*
+            // Second Configuration - this configurations is useful when you have to 
+            // utilize config files - qa/staging/prod.json 
+            (() => {
+      
+      
+              const environment = config.env.environment || 'qa'; // Default to QA
+              const filePath = path.resolve('cypress/config', `${environment}.json`);
+      
+              if (!fs.existsSync(filePath)) {
+                throw new Error(`Environment file not found: ${filePath}`);
+              }
+      
+              const envConfig = require(filePath);
+              config.env = { ...config.env, ...envConfig };
+            })();
+      
+      */
+      return config;
+
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     // excludeSpecPattern: "cypress/e2e/other/*.js",
@@ -72,7 +107,7 @@ module.exports = defineConfig({
     env: {
       first_name: "John",
       last_name: "Doe",
-      email: "john.doe@gmail.com"
-    }
+      email: "john.doe@gmail.com",
+    },
   },
 });
