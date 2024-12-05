@@ -1,7 +1,7 @@
 class HomePage_PO {
 
     visitHomePage() {
-        cy.visit(('/'), { timeout: 60000 });
+        cy.visit(('https://webdriveruniversity.com/'), { timeout: 60000 });
     }
 
     clickOn_ContactUs_Button() {

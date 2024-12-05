@@ -422,10 +422,6 @@
 ##### screenshots will only work with 'cypress run' command using CLI
 ##### default folder 'cypress/screenshots'
 
-#### add command in cypress.config.js file under e2e setup -    
-    screenshotOnRunFailure: true,
-    trashAssetsBeforeRuns: true,
-
 #### on failure - capture automatically 
     
 #### on even success - 
@@ -433,6 +429,9 @@
 
 
 #### Videos -
+
+#### add command in cypress.config.js file under e2e setup to record -
+    video: true
 
 ##### vidoes will only work with 'cypress run' command using CLI
 ##### default folder 'cypress/video'

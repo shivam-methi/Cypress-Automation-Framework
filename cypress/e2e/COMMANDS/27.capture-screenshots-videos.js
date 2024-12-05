@@ -3,6 +3,7 @@
 describe("Capture Screenshot", () => {
 
     //screenshots will only work with 'cypress run' command using CLI
+    // this test is suppose to get fail - to capture sceeenshots 
 
     it("Capture Screenshot on failure", () => {
         cy.visit("https://www.webdriveruniversity.com/");
