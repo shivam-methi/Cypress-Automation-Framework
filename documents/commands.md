@@ -993,3 +993,75 @@
     ▪ Monitor the progress in the Actions tab of your repository.
 ----------------------------------------------------------------------------------------------------------
 
+### 10. Integrate lint with Cypress: 
+
+#### Command to run: 
+    npm install eslint --save-dev
+    npm install eslint eslint-plugin-cypress --save-dev
+    npm install eslint-plugin-cucumber --save-dev
+  
+
+#### Create a eslint.config.mjs File at path cypress root folder:
+    import cypress from "eslint-plugin-cypress";
+    import globals from "globals";
+    import path from "node:path";
+    import { fileURLToPath } from "node:url";
+    import js from "@eslint/js";
+    import { FlatCompat } from "@eslint/eslintrc";
+
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const compat = new FlatCompat({
+    baseDirectory: __dirname,
+    recommendedConfig: js.configs.recommended,
+    allConfig: js.configs.all,
+    });
+
+    export default [
+    // Common configuration for JavaScript and TypeScript
+    ...compat.extends("eslint:recommended", "plugin:cypress/recommended"),
+    {
+        files: ["**/*.js", "**/*.ts"], // Target JavaScript and TypeScript files
+        plugins: {
+        cypress,
+        },
+        languageOptions: {
+        globals: {
+            ...globals.browser,
+            ...globals.node,
+            ...cypress.environments.globals.globals,
+        },
+        },
+        rules: {
+        "no-unused-vars": "warn", // Example rule
+        },
+    },
+    // Configuration for .feature files
+    {
+        files: ["**/*.feature"], // Target .feature files
+        plugins: {}, // No specific plugins for Gherkin linting
+        rules: {
+        // Add formatting rules if applicable
+        "max-len": ["warn", { code: 120 }], // Example rule for line length
+        },
+    },
+    ];
+
+
+#### add under scripts in package.json file:
+    "lint": "eslint cypress/e2e/**/*.{js,ts,feature}"
+
+
+#### Ignore All Rules for the Next Line in spec file:
+    // eslint-disable-next-line
+
+
+#### Command to run:
+    npm run lint
+
+    //automatically fix linting issues (if possible)
+    npm run lint -- --fix
+    
+    //to run for a specific test
+    npx eslint cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js     
+----------------------------------------------------------------------------------------------------------
