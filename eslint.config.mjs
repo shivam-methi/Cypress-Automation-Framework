@@ -26,6 +26,7 @@ export default [
         ...globals.browser,
         ...globals.node,
         ...cypress.environments.globals.globals,
+        globalThis: "readonly",
       },
     },
     rules: {
