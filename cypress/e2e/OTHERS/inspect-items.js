@@ -10,12 +10,14 @@ describe("Inspect automation tests store items using chain of commands", () => {
 
     it.only("click on the first item using item text", () => {
         cy.visit("https://www.automationteststore.com/");
-        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click().then(function (itemHeaderText) {
+
+        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').then(function (itemHeaderText) {
             console.log('Selected the following item:', itemHeaderText.text());
+        });
 
-        })
-
-    })
+        // Separate the click action
+        cy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click();
+    });
 
     it("click on the first item using item index", () => {
         cy.visit("https://www.automationteststore.com/");

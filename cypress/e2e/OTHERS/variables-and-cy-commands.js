@@ -14,7 +14,7 @@ describe("Verify variables,cypress commands & Jquery commands", () => {
         // Skincare.click();
 
         //Recommended Approach
-        const Makeup = cy.get('a[href*="product/category&path"]').contains('Makeup').click();
+        // const Makeup = cy.get('a[href*="product/category&path"]').contains('Makeup').click();
 
         cy.get('h1 .maintext').then(($headerText) => {
             const headerText = $headerText.text()
@@ -23,7 +23,7 @@ describe("Verify variables,cypress commands & Jquery commands", () => {
         });
 
 
-        const Skincare = cy.get('a[href*="product/category&path"]').contains('Skincare').click();
+        //const Skincare = cy.get('a[href*="product/category&path"]').contains('Skincare').click();
     })
 
 
