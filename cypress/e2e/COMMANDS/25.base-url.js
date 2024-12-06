@@ -7,7 +7,7 @@ describe("Access base url from config file", () => {
     })
 
     it("Should access the base url from config file and navigate to user login page", () => {
-        cy.visit("/" + "user/login");
+        cy.visit("/" + "Login-Portal/index.html");
     })
 
     it("Should access the base url from config file and custom commands file", () => {

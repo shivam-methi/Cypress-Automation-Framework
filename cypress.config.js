@@ -14,7 +14,7 @@ module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
 
-      // First Configuration 
+      // First Configuration
       (() => {
 
         // Add XLSX to JSON task
@@ -34,18 +34,21 @@ module.exports = defineConfig({
         // Add cucumber preprocessor
         on('file:preprocessor', cucumber());
 
-        //this configurations is useful 
-        // when you have to utilize dotenv/.env file 
-        const env = config.env.ENV || 'QA';
+        //this configurations is useful when you have to utilize dotenv/.env file 
 
+        // checks if the ENV variable is set in config.env(CLI) first
+        // If not, second it looks in process.env(.env file)
+        // If not, third it will set 'DEFAULT' env 
+        const env = config.env.ENV || process.env.ENV || 'DEFAULT';
         const envConfig = {
           QA: process.env.QA_BASE_URL,
           STAGING: process.env.STAGING_BASE_URL,
           PROD: process.env.PROD_BASE_URL,
+          DEFAULT: process.env.BASE_URL,
         };
 
         if (!envConfig[env]) {
-          throw new Error(`Invalid environment: ${env}. Must be one of QA, STAGING, or PROD.`);
+          throw new Error(`Invalid environment: ${env}. Must be one of QA, STAGING, PROD, or DEFAULT.`);
         }
 
         // Dynamically set the baseUrl
@@ -55,6 +58,7 @@ module.exports = defineConfig({
         config.env.QA_BASE_URL = process.env.QA_BASE_URL;
         config.env.STAGING_BASE_URL = process.env.STAGING_BASE_URL;
         config.env.PROD_BASE_URL = process.env.PROD_BASE_URL;
+        config.env.BASE_URL = process.env.BASE_URL;
 
         console.log(`Running tests with baseUrl: ${config.baseUrl}`);
       })();
@@ -82,7 +86,7 @@ module.exports = defineConfig({
     },
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx,feature}",
     // excludeSpecPattern: "cypress/e2e/other/*.js",
-    baseUrl: "https://www.webdriveruniversity.com",
+    // baseUrl: "https://www.webdriveruniversity.com",
     chromeWebSecurity: false,
     // experimentalSessionAndOrigin: true,
     // modifyObstructiveCode: false,
