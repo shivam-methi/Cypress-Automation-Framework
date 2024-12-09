@@ -28,6 +28,7 @@ export default [
         ...cypress.environments.globals.globals,
         globalThis: "readonly", // Declare 'globalThis' as a global
         user: "readonly",  // Declare 'user' as a global
+        data: "readonly",  // Declare 'data' as a global
       },
     },
     rules: {

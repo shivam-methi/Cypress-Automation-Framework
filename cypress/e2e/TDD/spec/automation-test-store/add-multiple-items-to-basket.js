@@ -3,21 +3,21 @@ import AutoStore_HairCarepage_PO from "../../../../support/TDD/pageObjects/autom
 
 describe("Add multiple items to basket", () => {
 
-  const autoStore_Homepage_PO = new AutoStore_Homepage_PO();
-  const autoStore_HairCarepage_PO = new AutoStore_HairCarepage_PO();
+    const autoStore_Homepage_PO = new AutoStore_Homepage_PO();
+    const autoStore_HairCarepage_PO = new AutoStore_HairCarepage_PO();
 
-  before(function () {
-    cy.fixture('products').then(function (data) {
-      globalThis.data = data;
+    before(function () {
+        cy.fixture('products').then(function (data) {
+            globalThis.data = data;
+        });
     });
-  });
 
-  beforeEach(function () {
-    autoStore_Homepage_PO.accessHomePage();
-    autoStore_Homepage_PO.clickOn_HairCare_Link();
-  });
+    beforeEach(function () {
+        autoStore_Homepage_PO.accessHomePage();
+        autoStore_Homepage_PO.clickOn_HairCare_Link();
+    });
 
-  it("Add specific items to basket", () => {
-    autoStore_HairCarepage_PO.addHairCareProductsToBasket();
-  });
+    it("Add specific items to basket", () => {
+        autoStore_HairCarepage_PO.addHairCareProductsToBasket();
+    });
 });
