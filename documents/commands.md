@@ -995,10 +995,11 @@
 
 ### 10. Integrate lint with Cypress: 
 
+### TDD:
+
 #### Command to run: 
     npm install eslint --save-dev
     npm install eslint eslint-plugin-cypress --save-dev
-    npm install eslint-plugin-cucumber --save-dev
   
 
 #### Create a eslint.config.mjs File at path cypress root folder:
@@ -1049,7 +1050,7 @@
 
 
 #### add under scripts in package.json file:
-    "lint": "eslint cypress/e2e/**/*.{js,ts,feature}"
+    "lint": "eslint cypress/e2e/**/*.{js,ts}"
 
 
 #### Ignore All Rules for the Next Line in spec file:
@@ -1063,5 +1064,54 @@
     npm run lint -- --fix
     
     //to run for a specific test
-    npx eslint cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js     
+    npx eslint cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js
+
+
+### BDD:
+
+#### Command to run: 
+    npm install gherkin-lint 
+    npm install gherkin-lint --save-dev
+  
+
+#### Create a .gherkin-lintrc File at path cypress root folder:
+    {
+    "indentation": [
+        "on",
+        {
+        "Feature": 0,
+        "Background": 0,
+        "Scenario": 4,
+        "Step": 8,
+        "Examples": 8,
+        "example": 12,
+        "given": 8,
+        "when": 8,
+        "then": 8,
+        "and": 8,
+        "but": 8,
+        "feature tag": 0,
+        "scenario tag": 0
+        }
+    ],
+    "max-scenarios-per-file": [
+        "on",
+        10
+    ],
+    "no-unnamed-scenarios": "on",
+    "no-dupe-scenario-names": "on",
+    "required-tags": "off"
+    }
+
+
+#### add under scripts in package.json file:
+    "gherkinLint": "npx gherkin-lint '**/*.feature'"
+
+
+#### Command to run:
+    npm run gherkinLint
+    
+    //to run for a specific test
+    npx gherkin-lint cypress/e2e/BDD/feature/webdriver-uni/login.feature
 ----------------------------------------------------------------------------------------------------------
+cypress\e2e\BDD\feature\webdriver-uni\login.feature
