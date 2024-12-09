@@ -1067,6 +1067,10 @@
     npx eslint cypress/e2e/TDD/spec/automation-test-store/add-multiple-items-to-basket.js
 
 
+#### lint rules:
+https://github.com/eslint/eslint?tab=readme-ov-file
+
+
 ### BDD:
 
 #### Command to run: 
@@ -1115,5 +1119,8 @@
     
     //to run for a specific test
     npx gherkin-lint cypress/e2e/BDD/feature/webdriver-uni/login.feature
+
+
+#### lint rules:
+https://github.com/gherkin-lint/gherkin-lint?tab=readme-ov-file#adding-custom-rules
 ----------------------------------------------------------------------------------------------------------
-cypress\e2e\BDD\feature\webdriver-uni\login.feature
