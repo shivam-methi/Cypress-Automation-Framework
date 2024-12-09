@@ -1,4 +1,3 @@
-
 describe("Json Object", () => {
     it("Json Object Examples", () => {
         const exampleObject = { "key": "Tim", "key2": "Jones" };

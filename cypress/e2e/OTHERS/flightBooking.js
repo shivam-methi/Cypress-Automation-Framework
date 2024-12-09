@@ -1,4 +1,3 @@
-
 describe('Flight Booking', () => {
 
     before('Clean local/session storage and cookies', () => {
@@ -6,7 +5,6 @@ describe('Flight Booking', () => {
         cy.clearAllSessionStorage();
         cy.clearCookies();
     });
-
 
     it('Book a flight from Delhi to Bangalore', { scrollBehavior: false }, () => {
 
@@ -35,7 +33,6 @@ describe('Flight Booking', () => {
         cy.xpath('//label/input[@id="toCity"]').click();
         cy.xpath('//input[@type="text" and @placeholder="To"]').type('Bengaluru');
         cy.xpath('//span[contains(@class,"makeFlex flexOne")]').first().click();
-
 
         var departureDate = new Date();
         departureDate.setDate(departureDate.getDate() + 0); 
@@ -72,7 +69,6 @@ describe('Flight Booking', () => {
 
         selectDepartureMonthAndYear();
         selectDepartureDay();
-
 
         var returnDate = new Date();
         returnDate.setDate(returnDate.getDate() + 1); 
@@ -111,5 +107,3 @@ describe('Flight Booking', () => {
         selectReturnDay();
     });
 });
-
-

@@ -5,8 +5,6 @@ describe("Verify variables,cypress commands & Jquery commands", () => {
     it("Navigating to specific product pages", () => {
         cy.visit("https://www.automationteststore.com/");
 
-
-
         // const Makeup = cy.get('a[href*="product/category&path"]').contains('Makeup');
         // Makeup.click();
 
@@ -22,10 +20,8 @@ describe("Verify variables,cypress commands & Jquery commands", () => {
             expect(headerText).is.eq('Makeup');
         });
 
-
         //const Skincare = cy.get('a[href*="product/category&path"]').contains('Skincare').click();
     })
-
 
     it.only("Validate properties of the Contact Us page", () => {
         cy.visit("https://automationteststore.com/index.php?rt=content/contact/");
@@ -39,10 +35,10 @@ describe("Verify variables,cypress commands & Jquery commands", () => {
             expect(firstNameText).to.contain('First name:');
            
             //Embedded commands (Closure)
-        cy.get('#field_11').then(fnText => {
-            cy.log(fnText.text())
-            cy.log(fnText)
-        })
+            cy.get('#field_11').then(fnText => {
+                cy.log(fnText.text())
+                cy.log(fnText)
+            })
         
         })
 

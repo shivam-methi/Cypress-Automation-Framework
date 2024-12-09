@@ -20,4 +20,3 @@ describe("Test Contact Us via Automation Test Store", () => {
     });
 
 })
-

@@ -11,7 +11,6 @@ describe("Iterate over element", () => {
         })
     })
 
-
     it("Add specific product to basket", () => {
         cy.visit("https://www.automationteststore.com/");
         cy.get('a[href*="product/category&path"]').contains('Hair Care').click();

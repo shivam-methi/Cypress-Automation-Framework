@@ -1041,6 +1041,8 @@
         "no-unused-vars": "warn", // Example rule
         "cypress/unsafe-to-chain-command": "off", // Disable this specific rule globally
         "indent": ["error", 4],  // Enforce 2-space indentation (change to 4 if preferred)
+        "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0, maxBOF: 0 }],
+        "eol-last": ["error", "always"], // Enforce a single newline at the end of the file
         },
     },
     ];

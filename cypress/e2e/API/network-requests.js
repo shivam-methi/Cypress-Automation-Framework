@@ -12,15 +12,15 @@ describe('Network Requests', () => {
             method: 'GET',
             url: 'https://jsonplaceholder.cypress.io/comments/1',
         },
-            {
-                body: {
-                    postId: 1,
-                    id: 1,
-                    name: 'test',
-                    email: 'test@gmail.com',
-                    body: 'Hello World!'
-                }
-            }).as('getComment');
+        {
+            body: {
+                postId: 1,
+                id: 1,
+                name: 'test',
+                email: 'test@gmail.com',
+                body: 'Hello World!'
+            }
+        }).as('getComment');
 
         cy.get('.network-btn').click();
 
@@ -51,11 +51,11 @@ describe('Network Requests', () => {
             method: 'PUT',
             url: 'https://jsonplaceholder.cypress.io/comments/1'
         },
-            {
-                statusCode: 404,
-                body: { error: message },
-                delay: 500
-            }).as('putComment');
+        {
+            statusCode: 404,
+            body: { error: message },
+            delay: 500
+        }).as('putComment');
 
         cy.get('.network-put').click();
 

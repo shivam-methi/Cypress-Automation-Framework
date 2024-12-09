@@ -15,6 +15,5 @@ describe("Access base url from config file", () => {
     })
 })
 
-
 //command to run from CLI
 //npx cypress run --browser chrome --headed --spec cypress/e2e/COMMANDS/25.base-url.js --config baseUrl=https://www.automationteststore.com

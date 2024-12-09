@@ -18,7 +18,6 @@ describe("Alias and Invoke", () => {
         cy.get('@productThumbnail').should('have.length', 16)
         cy.get('@productThumbnail').find('.productcart').invoke('attr', 'title').should('include', 'Add to Cart');
 
-
     })
 
     it.only("Calculate total of normal and sale products", () => {
