@@ -15,6 +15,7 @@ describe('Environment Configuration Tests', () => {
         cy.log(`STAGING URL: ${Cypress.env('STAGING_BASE_URL')}`);
         cy.log(`PROD URL: ${Cypress.env('PROD_BASE_URL')}`);
         cy.log(`Environment: ${Cypress.env('ENV')}`);
+        // eslint-disable-next-line
         cy.wait(60000);
     });
 });

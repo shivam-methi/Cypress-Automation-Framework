@@ -8,7 +8,7 @@ describe("Handling Data table", () => {
     it("Calculate & Assert the total age of all users", () => {
         var userDetails = [];
         let num = 0;
-        cy.get('#thumbnail-1 td').each(($el, index, $list) => {
+        cy.get('#thumbnail-1 td').each(($el, index) => {
             userDetails[index] = $el.text();
         }).then(() => {
             var i;
@@ -24,7 +24,7 @@ describe("Handling Data table", () => {
     });
 
     it.only("Calculate & Assert the age of a given user based on the last name ", () => {
-        cy.get('#thumbnail-1 tr td:nth-child(2)').each(($el, index, $list) => {
+        cy.get('#thumbnail-1 tr td:nth-child(2)').each(($el, index) => {
             const text = $el.text();
             if (text.includes('Woods')) {
                 cy.get('#thumbnail-1 tr td:nth-child(2)').eq(index).next().then((age) => {

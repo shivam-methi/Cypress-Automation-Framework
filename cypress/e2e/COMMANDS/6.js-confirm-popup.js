@@ -7,7 +7,7 @@ describe("Handle JS Confirm Popup", () => {
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click({ force: true });
         cy.get('#button4').click();
 
-        cy.on('window:confirm', (str) => {
+        cy.on('window:confirm', () => {
             return true;  //click ok
         })
         cy.get('#confirm-alert-text').contains('You pressed OK!');
@@ -18,7 +18,7 @@ describe("Handle JS Confirm Popup", () => {
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click({ force: true });
         cy.get('#button4').click();
 
-        cy.on('window:confirm', (str) => {
+        cy.on('window:confirm', () => {
             return false; //click cancel
         })
         cy.get('#confirm-alert-text').contains('You pressed Cancel!');
@@ -26,18 +26,25 @@ describe("Handle JS Confirm Popup", () => {
 
     it.only("Validate Js Confirm alert box using a stub", () => {
         cy.visit("https://www.webdriveruniversity.com/");
+
         cy.get('#popup-alerts').invoke('removeAttr', 'target').click({ force: true });
 
         const stub = cy.stub();
-        cy.on('window:confirm', stub)
+        cy.on('window:confirm', stub);
 
-        cy.get('#button4').click().then(() => {
+        cy.get('#button4').click();  // Click the button
+
+        cy.then(() => {
+            // Ensure the confirm alert was shown with the correct message
             expect(stub.getCall(0)).to.be.calledWith('Press a button!');
-        }).then(() => {
-            return true; //click Ok
-        }).then(() => {
-            cy.get('#confirm-alert-text').contains('You pressed OK!');
-        })
+        });
+
+        cy.then(() => {
+            // Click OK in the confirm dialog
+            return true;  // Click Ok
+        });
+
+        cy.get('#confirm-alert-text').contains('You pressed OK!');
 
     })
 })

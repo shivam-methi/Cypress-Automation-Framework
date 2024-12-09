@@ -7,7 +7,7 @@ describe("Verify Autocomplete dropdown list", () => {
         cy.get('#autocomplete-textfield').invoke('removeAttr', 'target').click({ force: true });
 
         cy.get('#myInput').type('A');
-        cy.get('#myInputautocomplete-list > *').each(($el, index, $list) => {
+        cy.get('#myInputautocomplete-list > *').each(($el) => {
             const prod = $el.text();
             const productToSelect = 'Avacado';
 
@@ -18,7 +18,7 @@ describe("Verify Autocomplete dropdown list", () => {
             }
         }).then(() => {
             cy.get('#myInput').type('G');
-            cy.get('#myInputautocomplete-list > *').each(($el, index, $list) => {
+            cy.get('#myInputautocomplete-list > *').each(($el) => {
                 const prod = $el.text();
                 const productToSelect = 'Grapes';
 

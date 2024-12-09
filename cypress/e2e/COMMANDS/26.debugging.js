@@ -8,6 +8,7 @@ describe("Test the debugging", () => {
         cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
 
         cy.get('[name="first_name"]').type('John').then(() => {
+            // eslint-disable-next-line
             debugger;
         });
         cy.get('[name="last_name"]').type('Doe');
@@ -39,6 +40,7 @@ describe("Test the debugging", () => {
         cy.visit("https://www.webdriveruniversity.com/");
         cy.get('#contact-us').invoke('removeAttr', 'target').click({ force: true });
 
+        // eslint-disable-next-line
         cy.get('[name="first_name"]').type('John').wait(10000);
         cy.get('[name="last_name"]').type('Doe');
         cy.get('[name="email"]').type('doe@gmail.com');

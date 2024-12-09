@@ -1031,11 +1031,14 @@
             ...globals.browser,
             ...globals.node,
             ...cypress.environments.globals.globals,
-            globalThis: "readonly",
+             globalThis: "readonly", // Declare 'globalThis' as a global
+            user: "readonly",  // Declare 'user' as a global
         },
         },
         rules: {
         "no-unused-vars": "warn", // Example rule
+        "cypress/unsafe-to-chain-command": "off", // Disable this specific rule globally
+        "indent": ["error", 4],  // Enforce 2-space indentation (change to 4 if preferred)
         },
     },
     ];
