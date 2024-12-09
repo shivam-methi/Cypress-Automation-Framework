@@ -1100,7 +1100,9 @@
     ],
     "no-unnamed-scenarios": "on",
     "no-dupe-scenario-names": "on",
-    "required-tags": "off"
+    "required-tags": "off",
+    "no-multiple-empty-lines": "on",
+    "new-line-at-eof": ["on", "yes"]
     }
 
 
