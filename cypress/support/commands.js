@@ -25,7 +25,7 @@ Cypress.Commands.add('navigateTo', () => {
 })
 
 Cypress.Commands.add('selectProduct', productName => {
-    cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
+    cy.get('.fixed_wrapper .prdocutname').each(($el) => {
         if ($el.text().includes(productName)) {
             cy.wrap($el).click();
         }
@@ -42,7 +42,7 @@ Cypress.Commands.add('contactFormSubmission', (firstName, lastName, email, comme
 })
 
 Cypress.Commands.add('addProductToBasket', productName => {
-    cy.get('.fixed_wrapper .prdocutname').each(($el, index, $list) => {
+    cy.get('.fixed_wrapper .prdocutname').each(($el, index) => {
         if ($el.text() === productName) {
             cy.log($el.text());
             cy.get('.productcart').eq(index).click();
@@ -63,7 +63,6 @@ Cypress.on('uncaught:exception', (err) => {
 
 // 2. Re-enable Cypress uncaught exception failures from React hydration errors
 Cypress.on('uncaught:exception', () => { });
-
 
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
