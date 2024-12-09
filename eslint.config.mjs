@@ -33,13 +33,4 @@ export default [
       "no-unused-vars": "warn", // Example rule
     },
   },
-  // Configuration for .feature files
-  {
-    files: ["**/*.feature"], // Target .feature files
-    plugins: {}, // No specific plugins for Gherkin linting
-    rules: {
-      // Add formatting rules if applicable
-      "max-len": ["warn", { code: 120 }], // Example rule for line length
-    },
-  },
 ];
