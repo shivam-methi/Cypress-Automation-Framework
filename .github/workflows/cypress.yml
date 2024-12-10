@@ -28,8 +28,8 @@ jobs:
         run: npm install
 
       # Run ESLint
-      - name: Run ESLint
-        run: eslint cypress/**/**/*.{js,ts} --fix && npx gherkin-lint '**/*.feature'
+      - name: Lint JavaScript and Gherkin files
+        run: npx eslint "cypress/**/**/*.{js,ts}" --fix && npx gherkin-lint "**/*.feature"
 
       # Run Cypress tests (only if linting passes)
       - name: Run Cypress Tests
