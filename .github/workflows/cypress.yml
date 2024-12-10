@@ -9,37 +9,41 @@ on:
       - main
 
 jobs:
-  cypress-run:
+  lint-and-test:
     runs-on: windows-latest
 
     steps:
-    # Checkout the repository
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    # Set up Node.js
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20
+      # Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
 
-    # Install dependencies
-    - name: Install Dependencies
-      run: npm install
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
 
-    # Run Cypress tests
-    - name: Run Cypress Tests
-      run: npm run triggerAllTests-autoTestStore
+      # Run ESLint
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.ts,.feature
 
-    # Save Cypress Videos and Screenshots (optional)
-    - name: Upload Artifacts
-      if: failure()
-      uses: actions/upload-artifact@v3
-      with:
-        name: cypress-results
-        path: |
-          cypress/videos
-          cypress/screenshots
+      # Run Cypress tests (only if linting passes)
+      - name: Run Cypress Tests
+        run: npm run triggerAllTests-autoTestStore
+
+      # Save Cypress Videos and Screenshots (optional)
+      - name: Upload Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-results
+          path: |
+            cypress/videos
+            cypress/screenshots
 
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
