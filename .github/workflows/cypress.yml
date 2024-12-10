@@ -29,7 +29,7 @@ jobs:
 
       # Run ESLint
       - name: Lint JavaScript files
-        run: npx eslint 'cypress/**/**/*.{js,ts}' --fix
+        run: npx eslint cypress/**/**/*.js
 
       # Run Cypress tests (only if linting passes)
       - name: Run Cypress Tests
