@@ -29,6 +29,7 @@ export default [
         globalThis: "readonly", // Declare 'globalThis' as a global
         user: "readonly",  // Declare 'user' as a global
         data: "readonly",  // Declare 'data' as a global
+        "AudioWorkletGlobalScope": false
       },
     },
     rules: {
