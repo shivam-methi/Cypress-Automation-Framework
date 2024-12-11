@@ -946,40 +946,43 @@
 
     jobs:
     cypress-run:
-        runs-on: ubuntu-latest
+        runs-on: windows-latest
 
         steps:
         # Checkout the repository
         - name: Checkout Code
-        uses: actions/checkout@v3
+            uses: actions/checkout@v3
 
         # Set up Node.js
         - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
+            uses: actions/setup-node@v3
+            with:
             node-version: 20
 
         # Install dependencies
         - name: Install Dependencies
-        run: npm install
+            run: npm install
+
+        # Run Lint
+        - name: Run Lint
+            run: npm run lintAll
 
         # Run Cypress tests
         - name: Run Cypress Tests
-        run: npm run test
+            run: npm run triggerAllTests-autoTestStore
 
         # Save Cypress Videos and Screenshots (optional)
         - name: Upload Artifacts
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
+            if: failure()
+            uses: actions/upload-artifact@v3
+            with:
             name: cypress-results
             path: |
-            cypress/videos
-            cypress/screenshots
+                cypress/videos
+                cypress/screenshots
 
-        env:
-        CYPRESS_BASE_URL: ${{ secrets.CYPRESS_BASE_URL }}
-        API_KEY: ${{ secrets.API_KEY }}
+    env:
+    BASE_URL: ${{ secrets.BASE_URL }}
 
 
 #### Configure Environment Variables (Optional): 
@@ -1125,3 +1128,4 @@ https://github.com/eslint/eslint?tab=readme-ov-file
 #### lint rules:
 https://github.com/gherkin-lint/gherkin-lint?tab=readme-ov-file#adding-custom-rules
 ----------------------------------------------------------------------------------------------------------
+
