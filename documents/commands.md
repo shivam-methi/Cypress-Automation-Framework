@@ -1027,16 +1027,17 @@
         cypress,
         },
         languageOptions: {
-        globals: {
-            ...globals.browser,
-            ...globals.node,
-            ...cypress.environments.globals.globals,
-            globalThis: "readonly", // Declare 'globalThis' as a global
-            user: "readonly",  // Declare 'user' as a global
-            data: "readonly",  // Declare 'data' as a global
-
-        },
-        },
+            globals: Object.fromEntries(
+                Object.entries({
+                ...globals.browser,
+                ...globals.node,
+                ...cypress.environments.globals.globals,
+                globalThis: "readonly", // Declare 'globalThis' as a global
+                user: "readonly", // Declare 'user' as a global
+                data: "readonly", // Declare 'data' as a global
+                }).map(([key, value]) => [key.trim(), value])
+            ),
+            },
         rules: {
         "no-unused-vars": "warn", // Example rule
         "cypress/unsafe-to-chain-command": "off", // Disable this specific rule globally

@@ -27,9 +27,9 @@ export default [
           ...globals.browser,
           ...globals.node,
           ...cypress.environments.globals.globals,
-          globalThis: "readonly",
-          user: "readonly",
-          data: "readonly",
+          globalThis: "readonly", // Declare 'globalThis' as a global
+          user: "readonly", // Declare 'user' as a global
+          data: "readonly", // Declare 'data' as a global
         }).map(([key, value]) => [key.trim(), value])
       ),
     },
