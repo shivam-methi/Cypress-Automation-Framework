@@ -14,6 +14,3 @@ Feature: WebdriverUniversity Login Page
         And I enter a password webdriver12
         And I click on the login button
         Then I should be presented with the following message validation failed
-
-
-
