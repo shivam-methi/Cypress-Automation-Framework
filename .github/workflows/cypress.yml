@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Run ESLint
+      # Run Lint
       - name: Run Lint
         run: npm run lintAll
 
