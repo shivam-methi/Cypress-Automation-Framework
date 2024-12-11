@@ -22,19 +22,21 @@ export default [
       cypress,
     },
     languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...cypress.environments.globals.globals,
-        globalThis: "readonly", // Declare 'globalThis' as a global
-        user: "readonly",  // Declare 'user' as a global
-        data: "readonly",  // Declare 'data' as a global
-      },
+      globals: Object.fromEntries(
+        Object.entries({
+          ...globals.browser,
+          ...globals.node,
+          ...cypress.environments.globals.globals,
+          globalThis: "readonly",
+          user: "readonly",
+          data: "readonly",
+        }).map(([key, value]) => [key.trim(), value])
+      ),
     },
     rules: {
       "no-unused-vars": "warn", // Example rule
       "cypress/unsafe-to-chain-command": "off", // Disable this specific rule globally
-      "indent": ["error", 4],  // Enforce 2-space indentation (change to 4 if preferred)
+      indent: ["error", 4], // Enforce 2-space indentation (change to 4 if preferred)
       "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0, maxBOF: 0 }],
       "eol-last": ["error", "always"], // Enforce a single newline at the end of the file
     },
