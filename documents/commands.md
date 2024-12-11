@@ -1111,7 +1111,7 @@ https://github.com/eslint/eslint?tab=readme-ov-file
 
 
 #### add under scripts in package.json file:
-    "gherkinLint": "npx gherkin-lint '**/*.feature'"
+    "gherkinLint": "npx gherkin-lint **/*.feature"
 
 
 #### Command to run:
