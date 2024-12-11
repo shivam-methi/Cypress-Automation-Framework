@@ -22,7 +22,7 @@
     "cypress-multi-browser": "npm run triggerAllTests-autoTestStore -- --headed --browser chrome & npm run triggerAllTests-autoTestStore -- --headed --browser electron",
     "lint": "eslint cypress/e2e/**/*.{js,ts}",
     "gherkinLint": "npx gherkin-lint **/*.feature",
-    "lintAll": "eslint cypress/**/**/*.{js,ts} --fix && npx gherkin-lint **/*.feature"
+    "lintAll": "cmd /c \"eslint cypress/**/**/*.{js,ts} & npx gherkin-lint **/*.feature\""
   },
   "keywords": [],
   "author": "",
