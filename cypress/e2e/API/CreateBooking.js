@@ -34,8 +34,6 @@ describe('Create Booking', () => {
             headers: {
                 accept: 'application/json'
             }
-            
-
 
         }).then(response => {
             let body = JSON.parse(JSON.stringify(response.body));
@@ -45,6 +43,3 @@ describe('Create Booking', () => {
         })
     });
 });
-
-
-
